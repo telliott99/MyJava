@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Objects &mdash; MyJava 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="MyJava 0.1 documentation" href="index.html" />
+    <link rel="next" title="Importing our files" href="imports.html" />
+    <link rel="prev" title="Files: IO" href="files.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="imports.html" title="Importing our files"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="files.html" title="Files: IO"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">MyJava 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="objects">
+<span id="id1"></span><h1>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">¶</a></h1>
+<p>Of course, Java is all about &#8220;objects&#8221; and object-oriented programming.  Here is a relatively simple example where we define our own objects.  The code is in two parts, and should be placed in the single file:  <tt class="docutils literal"><span class="pre">SortStuff.java</span></tt>.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Obj</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="c1">// counter for total number of objects</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">Obj</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">){</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">s</span><span class="o">;</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;%d: %s&quot;</span><span class="o">,</span> <span class="n">count</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>The import is explained below.</p>
+<p>This part gives the definition of our <tt class="docutils literal"><span class="pre">Obj</span></tt> class.  The compiler will use the definition to generate objects of this type when we ask for them.  Each object will have its own name.  The class as a whole will keep track of the count of all objects of class <tt class="docutils literal"><span class="pre">Obj</span></tt>.  The variable <tt class="docutils literal"><span class="pre">count</span></tt> is static and there is one per class.  For &#8220;instantiation&#8221;, the programmer will provide a <tt class="docutils literal"><span class="pre">name</span></tt>, and the &#8220;constuctor&#8221; function (with the same name as the class: <tt class="docutils literal"><span class="pre">public</span> <span class="pre">Obj(String</span> <span class="pre">s)</span></tt>) will be called, during which the count of objects will be incremented by one.</p>
+<p>To give a nice printable description of the class, we provide the <tt class="docutils literal"><span class="pre">toString</span></tt> function.</p>
+<p>The second section of code should go just below the above portion in the same file:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">class</span> <span class="nc">ObjStuff</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Obj</span> <span class="n">o1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Obj</span><span class="o">(</span><span class="s">&quot;Tom&quot;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">o1</span><span class="o">);</span>
+        <span class="n">Obj</span> <span class="n">o2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Obj</span><span class="o">(</span><span class="s">&quot;Joan&quot;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">o1</span><span class="o">);</span>
+        <span class="n">Obj</span> <span class="n">o3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Obj</span><span class="o">(</span><span class="s">&quot;Sean&quot;</span><span class="o">);</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Obj</span><span class="o">&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Obj</span><span class="o">&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Obj</span> <span class="nl">o:</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">o1</span><span class="o">,</span><span class="n">o2</span><span class="o">,</span><span class="n">o3</span><span class="o">)){</span>
+            <span class="n">A</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">o</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;finally:&quot;</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Obj</span> <span class="nl">o:</span><span class="n">A</span><span class="o">)</span> <span class="o">{</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">o</span><span class="o">);</span> <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>We &#8220;make&#8221; or &#8220;instantiate&#8221; three objects with the variable names as shown (and also <tt class="docutils literal"><span class="pre">names</span></tt> for each).  We make an <tt class="docutils literal"><span class="pre">ArrayList</span></tt> of the objects (there may be an easier way to do this that I don&#8217;t know at the moment), and then use the <tt class="docutils literal"><span class="pre">for-each</span></tt> construct to iterate through the list and print out the description of each object.</p>
+<p>From the command line:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="o">&gt;</span> <span class="n">javac</span> <span class="n">ObjStuff</span><span class="o">.</span><span class="na">java</span>
+<span class="o">&gt;</span> <span class="n">java</span> <span class="n">ObjStuff</span>
+<span class="mi">1</span><span class="o">:</span> <span class="n">Tom</span>
+<span class="mi">2</span><span class="o">:</span> <span class="n">Tom</span>
+<span class="k">finally</span><span class="o">:</span>
+<span class="mi">3</span><span class="o">:</span> <span class="n">Tom</span>
+<span class="mi">3</span><span class="o">:</span> <span class="n">Joan</span>
+<span class="mi">3</span><span class="o">:</span> <span class="n">Sean</span>
+<span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The numbers that shown are the <tt class="docutils literal"><span class="pre">count</span></tt> of objects of class <tt class="docutils literal"><span class="pre">Obj</span></tt>.  We call <tt class="docutils literal"><span class="pre">println(o1)</span></tt> after instantiating the second object, and see that the count has been increased appropriately.  Even though we are asking the first object what the count is, it &#8220;knows&#8221; that a second object of its type has been created.  After making three objects, the count is 3.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="files.html"
+                        title="previous chapter">Files:  IO</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="imports.html"
+                        title="next chapter">Importing our files</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/objects.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="imports.html" title="Importing our files"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="files.html" title="Files: IO"
+             >previous</a> |</li>
+        <li><a href="index.html">MyJava 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Tom Elliott.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

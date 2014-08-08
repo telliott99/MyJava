@@ -1,0 +1,68 @@
+Two ways to make another file visible:
+below:  declare as part of a "package"
+or make sure it is on the search path for classes
+
+export CLASSPATH="."
+or just use flag -cp .
+
+so:
+> javac Obj.java 
+> javac ObjStuff.java -cp .
+> java ObjStuff
+Tom
+Joan
+>
+
+to use "package"
+
+// Obj.java
+package mystuff;
+
+class Obj {
+    String name;
+    public Obj(String s){
+        name = s;
+    }
+    public String toString() {
+        return name;
+    }
+}
+
+refers to the mystuff package
+can be compiled on Desktop
+and then copied into directory:  mystuff
+
+or just compiled there
+then
+
+// ObjStuff.java
+package mystuff;
+
+class ObjStuff {
+    public static void main(String[] args) {
+        Obj o = new Obj("Tom");
+        System.out.println(o);
+        o.name = "Joan";
+        System.out.println(o);
+    }
+}
+
+* must be on the Desktop to compile * 
+Another way, to compile from mystuff directory:
+javac ObjStuff.java -cp ..
+
+
+* must copy ObjStuff.class to mystuff directory to run
+
+cp ObjStuff.class mystuff
+
+> java mystuff/ObjStuff
+Tom
+Joan
+
+but still must be on the Desktop and do
+> java mystuff/ObjStuff
+
+can't get it to work from within mystuff directory with 
+java ../mystuff/ObjStuff
+(i.e., by package method)

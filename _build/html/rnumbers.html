@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Random Numbers &mdash; MyJava 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="MyJava 0.1 documentation" href="index.html" />
+    <link rel="prev" title="Setting up for Java" href="intro.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="intro.html" title="Setting up for Java"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">MyJava 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="random-numbers">
+<span id="rnumbers"></span><h1>Random Numbers<a class="headerlink" href="#random-numbers" title="Permalink to this headline">¶</a></h1>
+<p>Not much to say about numbers.  Presumably, you know the difference between say, floats and integers.  Random numbers (really &#8220;pseudo-random&#8221; numbers), can be obtained in a couple ways.  Here we use the function <tt class="docutils literal"><span class="pre">random</span></tt> from the <tt class="docutils literal"><span class="pre">Math</span></tt> package (??)</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RandomInt</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">double</span> <span class="n">r</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&quot;Your random number is: %3.2f&quot;</span><span class="o">,</span> <span class="n">r</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>&gt; javac RandomInt.java
+&gt; java RandomInt
+Your random number is: 0.22
+&gt;
+</pre></div>
+</div>
+<p>In this version we used a format string <tt class="docutils literal"><span class="pre">&quot;</span>&nbsp; <span class="pre">%3.2f&quot;,</span> <span class="pre">r</span></tt> and the function <tt class="docutils literal"><span class="pre">printf</span></tt>. We could get a newline by putting <tt class="docutils literal"><span class="pre">&quot;</span>&nbsp; <span class="pre">%3.2f\n&quot;,</span> <span class="pre">r</span></tt>, then we wouldn&#8217;t need the next call <tt class="docutils literal"><span class="pre">System.out.println();</span></tt>.</p>
+<p>The main point to make here is that the random number generator gives us a floating point number in the half-open range <tt class="docutils literal"><span class="pre">[0,1)</span></tt>. In the next code sample, we obtain an integer in the range <tt class="docutils literal"><span class="pre">[0,N)</span></tt>:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RandomInt</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">double</span> <span class="n">r</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">11</span><span class="o">;</span>
+        <span class="c1">// a pseudo-random integer between 0 and N-1 (10)</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">N</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Your random integer is: &quot;</span> <span class="o">+</span> <span class="n">n</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>In the above snippet, we use a <em>cast</em> to <tt class="docutils literal"><span class="pre">int</span></tt>, which gives the floor or largest integer value that is less than the given floating point number.  In the <tt class="docutils literal"><span class="pre">println</span></tt> function we also (implicitly) cast from int to a String, which then got concatenated with the first part of the output.  Another way to do this would be to use a format string and do:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Your random integer is: %d&quot;</span><span class="o">,</span> <span class="n">n</span><span class="o">);</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">%d</span></tt> is for integers.  Next, let&#8217;s give the user the ability to input a value for <tt class="docutils literal"><span class="pre">N</span></tt>, as follows.  Add the following line as the first line of the function <tt class="docutils literal"><span class="pre">main</span></tt>:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+</pre></div>
+</div>
+<p>Here is the result:</p>
+<div class="highlight-bash"><div class="highlight"><pre>&gt; java RandomInt 1000
+Your random integer is: 659
+</pre></div>
+</div>
+<p>As you might expect, if the user does not input a number (or inputs a string or something), this code just crashes.  To do this right, we will need to implement the ability to check for and deal appropriately with errors.  But that is getting ahead of ourselves.</p>
+<p>Finally, we provide the ability to specify a range of integers for the random number:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RandomInt</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+        <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+        <span class="kt">double</span> <span class="n">r</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">();</span>
+        <span class="c1">// a pseudo-random integer in the range min..max</span>
+        <span class="kt">int</span> <span class="n">range</span> <span class="o">=</span> <span class="n">max</span> <span class="o">-</span> <span class="n">min</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">range</span><span class="o">)</span> <span class="o">+</span> <span class="n">min</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&quot;Your random integer is: %d&quot;</span><span class="o">,</span> <span class="n">n</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>And the result:</p>
+<div class="highlight-bash"><div class="highlight"><pre>&gt; java RandomInt 135 223
+143
+&gt;
+</pre></div>
+</div>
+<p>Actually testing this code, to see that the numbers are approximately uniform, and that the range matches what we specified, is left for another time.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">Setting up for Java</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/rnumbers.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="intro.html" title="Setting up for Java"
+             >previous</a> |</li>
+        <li><a href="index.html">MyJava 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Tom Elliott.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

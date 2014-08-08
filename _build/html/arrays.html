@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Arrays &mdash; MyJava 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="MyJava 0.1 documentation" href="index.html" />
+    <link rel="next" title="ArrayLists" href="arraylists.html" />
+    <link rel="prev" title="Importing our files" href="imports.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="arraylists.html" title="ArrayLists"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="imports.html" title="Importing our files"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">MyJava 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="arrays">
+<span id="id1"></span><h1>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h1>
+<p>There are a number of different &#8220;collections&#8221; in Java, but the most fundamental is the array, which shares properties with arrays in C and C++.</p>
+<p>Here&#8217;s an example:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">arrays</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">A</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span> <span class="o">};</span>
+
+        <span class="c1">// for-each</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="nl">i:</span> <span class="n">A</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&quot;%d &quot;</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">A</span><span class="o">));</span>
+
+        <span class="c1">// using an index</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">&quot;A:  &quot;</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">A</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&quot;%d: %d, &quot;</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">A</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&quot;%d: %d.&quot;</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">A</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+             <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>The import statement at the top is needed for the <tt class="docutils literal"><span class="pre">Arrays.toString</span></tt> method, which gives a pretty formatting to the array.  This line</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kt">int</span><span class="o">[]</span> <span class="n">A</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span> <span class="o">};</span>
+</pre></div>
+</div>
+<p>combines declaration and initialization.  We go through the array and print the values in three ways:  using a for-each loop and a format string, using the <tt class="docutils literal"><span class="pre">Arrays.toString</span></tt> method, and using an index that ranges from 0 to <tt class="docutils literal"><span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">A.length</span></tt>.  Using the index allows us to print the last value in a special way.</p>
+<p>The output:</p>
+<div class="highlight-bash"><div class="highlight"><pre>&gt; java arrays
+1 2 3 4 5
+<span class="o">[</span>1, 2, 3, 4, 5<span class="o">]</span>
+A:  0: 1, 1: 2, 2: 3, 3: 4, 4: 5.
+&gt;
+</pre></div>
+</div>
+<p>We can spiff things up a little by doing the following.  A common usage is to <tt class="docutils literal"><span class="pre">join</span></tt> the elements of an array of strings joined by a string separator.  This construct doesn&#8217;t exist in standard Java, though it does in certain add-on libraries, so we will roll our own:</p>
+<div class="highlight-bash"><div class="highlight"><pre>import java.util.*;
+
+class Joiner <span class="o">{</span>
+    public static String join<span class="o">(</span>String<span class="o">[]</span> words, String sep<span class="o">){</span>
+        StringBuilder <span class="nv">sb</span> <span class="o">=</span> new StringBuilder<span class="o">()</span>;
+        int <span class="nv">count</span> <span class="o">=</span> 0;
+        <span class="k">for</span> <span class="o">(</span>String s:words<span class="o">)</span> <span class="o">{</span>
+            sb.append<span class="o">(</span>s<span class="o">)</span>;
+            count +<span class="o">=</span> 1;
+            <span class="k">if</span> <span class="o">(</span>count !<span class="o">=</span> words.length-1<span class="o">)</span> <span class="o">{</span>
+                sb.append<span class="o">(</span>sep<span class="o">)</span>;
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return </span>sb.toString<span class="o">()</span>;
+    <span class="o">}</span>
+<span class="o">}</span>
+
+class arrays <span class="o">{</span>
+    public static void main<span class="o">(</span>String<span class="o">[]</span> args<span class="o">)</span> <span class="o">{</span>
+        String<span class="o">[]</span> <span class="nv">C</span> <span class="o">=</span> <span class="o">{</span> <span class="s2">&quot;a&quot;</span>,<span class="s2">&quot;b&quot;</span>,<span class="s2">&quot;c&quot;</span>,<span class="s2">&quot;d&quot;</span>,<span class="s2">&quot;e&quot;</span><span class="o">}</span>;
+        StringBuilder <span class="nv">sb</span> <span class="o">=</span> new StringBuilder<span class="o">()</span>;
+
+        <span class="k">for</span> <span class="o">(</span>String s: C<span class="o">)</span> <span class="o">{</span> sb.append<span class="o">(</span>s<span class="o">)</span>; <span class="o">}</span>
+        System.out.println<span class="o">(</span>sb.toString<span class="o">())</span>;
+
+        boolean b;
+        <span class="nv">b</span> <span class="o">=</span> Arrays.asList<span class="o">(</span>C<span class="o">)</span>.contains<span class="o">(</span><span class="s2">&quot;a&quot;</span><span class="o">)</span>;
+        System.out.println<span class="o">(</span>b<span class="o">)</span>;
+
+        Joiner <span class="nv">J</span> <span class="o">=</span> new Joiner<span class="o">()</span>;
+        System.out.println<span class="o">(</span>J.join<span class="o">(</span>C,<span class="s2">&quot;*&quot;</span><span class="o">))</span>;
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>In the <tt class="docutils literal"><span class="pre">main</span></tt> function, we examine the contents of our array of Strings in two ways.  First, we use a <tt class="docutils literal"><span class="pre">StringBuilder</span></tt> to construct a string from a list of values.  (Is there a way to initialize with a list??)  Then we just do <tt class="docutils literal"><span class="pre">sb.toString()</span></tt> to get the string from it.  In the middle part we test whether the array contains a particular value.  Since the only way to access the array elements directly is using the <tt class="docutils literal"><span class="pre">[]</span></tt> operator, we must first cast the array using the call:  <tt class="docutils literal"><span class="pre">Arrays.asList</span></tt>.</p>
+<p>In the last part of <tt class="docutils literal"><span class="pre">main</span></tt>, we use our <tt class="docutils literal"><span class="pre">Joiner</span></tt> to class to join the components of the array, inserting the String <tt class="docutils literal"><span class="pre">*</span></tt> between each element.</p>
+<p>Here is the output:</p>
+<div class="highlight-bash"><div class="highlight"><pre>&gt; java arrays
+abcde
+<span class="nb">true</span>
+a*b*c*de*
+&gt;
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="imports.html"
+                        title="previous chapter">Importing our files</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="arraylists.html"
+                        title="next chapter">ArrayLists</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/arrays.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="arraylists.html" title="ArrayLists"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="imports.html" title="Importing our files"
+             >previous</a> |</li>
+        <li><a href="index.html">MyJava 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Tom Elliott.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

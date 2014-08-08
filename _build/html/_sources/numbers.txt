@@ -1,0 +1,61 @@
+.. _rnumbers:
+
+##############
+Random Numbers
+##############
+
+Not much to say about numbers.  Presumably, you know the difference between say, floats and integers.  Random numbers (really "pseudo-random" numbers), can be obtained in a couple ways.  Here we use the function ``random`` from the ``Math`` package (??)
+
+.. sourcecode:: Java
+
+    public class RandomInt { 
+        public static void main(String[] args) { 
+            double r = Math.random(); 
+            System.out.printf("Your random number is: %3.2f", r);
+            System.out.println();
+        }
+    }
+
+.. sourcecode:: bash
+
+    > javac RandomInt.java 
+    > java RandomInt
+    Your random number is: 0.22
+    >
+
+In this version we used a format string ``"  %3.2f", r`` and the function ``printf``. We could get a newline by putting ``"  %3.2f\n", r``, then we wouldn't need the next call ``System.out.println();``.
+
+The main point to make here is that the random number generator gives us a floating point number in the half-open range ``[0,1)``. In the next code sample, we obtain an integer in the range ``[0,N)``:
+
+.. sourcecode:: Java
+
+    public class RandomInt { 
+        public static void main(String[] args) { 
+            double r = Math.random();
+            int N = 11;
+            // a pseudo-random integer between 0 and N-1 (10)
+            int n = (int) (r * N);
+            System.out.println("Your random integer is: " + n);
+        }
+    }
+
+In the above snippet, we use a *cast* to ``int``, which gives the floor or largest integer value that is less than the given floating point number.  In the ``println`` function we also (implicitly) cast from int to a String, which then got concatenated with the first part of the output.  Another way to do this would be to use a format string and do:
+
+.. sourcecode:: Java
+
+    System.out.println("Your random integer is: %d", n);
+
+``%d`` is for integers.  Next, let's give the user the ability to input a value for ``N``, as follows.  Add the following line as the first line of the function ``main``:
+
+.. sourcecode:: Java
+
+    int N = Integer.parseInt(args[0]);
+
+Here is the result:
+
+.. sourcecode:: bash
+
+    > java RandomInt 1000
+    Your random integer is: 659
+
+
