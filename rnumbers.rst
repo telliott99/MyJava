@@ -11,7 +11,7 @@ Not much to say about numbers.  Presumably, you know the difference between say,
     public class RandomInt { 
         public static void main(String[] args) { 
             double r = Math.random(); 
-            System.out.printf("Your random number is: %3.2f", r);
+            System.out.printf("Your random number is: %3.5f", r);
             System.out.println();
         }
     }
@@ -20,12 +20,14 @@ Not much to say about numbers.  Presumably, you know the difference between say,
 
     > javac RandomInt.java 
     > java RandomInt
-    Your random number is: 0.22
+    Your random number is: 0.91185
     >
 
-In this version we used a format string ``"  %3.2f", r`` and the function ``printf``. We could get a newline by putting ``"  %3.2f\n", r``, then we wouldn't need the next call ``System.out.println();``.
+In this version we used a format string ``"  %3.5f", r`` and the function ``printf``. We could get a newline by putting ``"  %3.5f\n", r``, if we did that then we wouldn't need the next call ``System.out.println();``.
 
-The main point to make here is that the random number generator gives us a floating point number in the half-open range ``[0,1)``. In the next code sample, we obtain an integer in the range ``[0,N)``:
+The main point to make here is that the random number generator gives us a floating point number in the half-open range ``[0,1)``.  (The range includes 0 but not 1---this makes more sense for integers than real numbers).  
+
+In the next code sample, we obtain an integer in the range ``[0,N)``:
 
 .. sourcecode:: java
 
@@ -39,7 +41,7 @@ The main point to make here is that the random number generator gives us a float
         }
     }
 
-In the above snippet, we use a *cast* to ``int``, which gives the floor or largest integer value that is less than the given floating point number.  In the ``println`` function we also (implicitly) cast from int to a String, which then got concatenated with the first part of the output.  Another way to do this would be to use a format string and do:
+In the above snippet, we use a *cast* to ``int``, which gives the "floor" or largest integer value that is less than the given floating point number.  In the ``println`` function we also (implicitly) cast from int to a String, which then got concatenated with the first part of the output.  Another way to do this would be to use a "format string" and do:
 
 .. sourcecode:: java
 
@@ -58,7 +60,7 @@ Here is the result:
     > java RandomInt 1000
     Your random integer is: 659
 
-As you might expect, if the user does not input a number (or inputs a string or something), this code just crashes.  To do this right, we will need to implement the ability to check for and deal appropriately with errors.  But that is getting ahead of ourselves.
+As you might expect, if the user does not input a number (or inputs a string or something), this code just crashes.  To do this right, we will need to implement the ability to check for and deal appropriately with errors.  We'll come back to this issue later.
     
 Finally, we provide the ability to specify a range of integers for the random number:
 
@@ -85,6 +87,6 @@ And the result:
     143
     >
 
-Actually testing this code, to see that the numbers are approximately uniform, and that the range matches what we specified, is left for another time.
+Actually testing this code, to see that the numbers are approximately uniform, and that the range matches what we specified, is also left for another time.
 
 

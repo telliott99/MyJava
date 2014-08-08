@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="MyJava 0.1 documentation" href="index.html" />
-    <link rel="next" title="User Input" href="input.html" />
-    <link rel="prev" title="Random Numbers" href="rnumbers.html" /> 
+    <link rel="next" title="Random Numbers" href="rnumbers.html" />
+    <link rel="prev" title="Setting up" href="intro.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,10 +35,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="input.html" title="User Input"
+          <a href="rnumbers.html" title="Random Numbers"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="rnumbers.html" title="Random Numbers"
+          <a href="intro.html" title="Setting up"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">MyJava 0.1 documentation</a> &raquo;</li> 
       </ul>
@@ -51,9 +51,12 @@
             
   <div class="section" id="strings">
 <span id="id1"></span><h1>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h1>
-<p>Here is a first example using the <tt class="docutils literal"><span class="pre">String</span></tt> class in Java. We initialize a new String variable <tt class="docutils literal"><span class="pre">s</span></tt> with the value <tt class="docutils literal"><span class="pre">&quot;abc&quot;</span></tt>.</p>
-<p>To print out each character of the string, we obtain an array by use of the function <tt class="docutils literal"><span class="pre">split</span></tt>, which generates an array (of String values).</p>
-<p>The <tt class="docutils literal"><span class="pre">for-each</span></tt> loop uses a special syntax which assigns each value in an array to the variable <tt class="docutils literal"><span class="pre">c</span></tt> in succession, and then we print the result.</p>
+<p>Let&#8217;s take a look at the <tt class="docutils literal"><span class="pre">String</span></tt> class in Java. We initialize a new String variable <tt class="docutils literal"><span class="pre">s</span></tt> with the value <tt class="docutils literal"><span class="pre">&quot;abc&quot;</span></tt> by writing:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span><span class="o">;</span>
+</pre></div>
+</div>
+<p>To print out each character of the string, first we obtain an array by use of the function <tt class="docutils literal"><span class="pre">split</span></tt>.  This generates an array of Strings of length 1 each.</p>
+<p>The <tt class="docutils literal"><span class="pre">for-each</span></tt> loop uses a special syntax which assigns each value in an array to a variable (<tt class="docutils literal"><span class="pre">c</span></tt>) in succession, and then the result is printed.</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringStuff</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;abc&quot;</span><span class="o">;</span>
@@ -65,7 +68,7 @@
 <span class="o">}</span>
 </pre></div>
 </div>
-<p>We also use string concatenation when we do <tt class="docutils literal"><span class="pre">c</span> <span class="pre">+</span> <span class="pre">&quot;</span> <span class="pre">&quot;</span></tt>, which puts a space after each character (and an extra one at the end which is invisible here).</p>
+<p>The code <tt class="docutils literal"><span class="pre">c</span> <span class="pre">+</span> <span class="pre">&quot;</span> <span class="pre">&quot;</span></tt> is a string <em>concatenation</em>;  this puts a space after each character (and an extra one at the end which is invisible here).</p>
 <p>From the command line:</p>
 <div class="highlight-bash"><div class="highlight"><pre>&gt; javac StringStuff.java
 &gt; java StringStuff
@@ -73,18 +76,37 @@ a b c
 &gt;
 </pre></div>
 </div>
-<p>Other string functions include:</p>
+<p>To examine every character of a String, one could also convert the String to an array of <tt class="docutils literal"><span class="pre">char</span></tt>, something like this:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="k">for</span> <span class="o">(</span>char c: s.toCharArray<span class="o">())</span> <span class="o">{</span>
+    System.out.println<span class="o">(</span>c<span class="o">)</span>;
+     <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Or</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++){</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>There are lots of other string functions including:</p>
 <blockquote>
 <div><ul class="simple">
 <li><tt class="docutils literal"><span class="pre">length()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">charAt(index)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">substring(start,stop)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">contains(sequence)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">startsWith(prefix)</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">toUpperCase()</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">indexOf(char)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">indexOf(string)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">lastIndexOf(string,index)</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">trim()</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">replace(c1,c2)</span></tt></li>
 </ul>
 </div></blockquote>
-<p>Add this to the previous class:</p>
+<p>Remember that strings are immutable, they can&#8217;t be changed.  So, if we call a function to change a string, it returns a new string with the desired change.  Calling <tt class="docutils literal"><span class="pre">&quot;</span>&nbsp; <span class="pre">leading&quot;.trim()</span></tt> will return the String <tt class="docutils literal"><span class="pre">&quot;leading&quot;</span></tt>.</p>
+<p>There are other functions to deal with Unicode, but that is a more advanced topic that we will evade at the moment.</p>
+<p>Let&#8217;s look at <tt class="docutils literal"><span class="pre">replace</span></tt>.  Add this to the previous class:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="n">String</span> <span class="n">t</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">&quot;b&quot;</span><span class="o">,</span><span class="s">&quot;*&quot;</span><span class="o">);</span>
 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">t</span><span class="o">);</span>
 </pre></div>
@@ -95,7 +117,7 @@ a*c
 &gt;
 </pre></div>
 </div>
-<p>It&#8217;s worth pointing out that the <tt class="docutils literal"><span class="pre">split</span></tt> method can take a &#8220;regular expression&#8221; to split on.  An example might be:</p>
+<p>The <tt class="docutils literal"><span class="pre">split</span></tt> method can take a &#8220;regular expression&#8221; to split on.  An example might be:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringStuff</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;a#b@c.d&quot;</span><span class="o">;</span>
@@ -123,11 +145,11 @@ a b c d
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="rnumbers.html"
-                        title="previous chapter">Random Numbers</a></p>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">Setting up</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="input.html"
-                        title="next chapter">User Input</a></p>
+  <p class="topless"><a href="rnumbers.html"
+                        title="next chapter">Random Numbers</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/strings.txt"
@@ -157,10 +179,10 @@ a b c d
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="input.html" title="User Input"
+          <a href="rnumbers.html" title="Random Numbers"
              >next</a> |</li>
         <li class="right" >
-          <a href="rnumbers.html" title="Random Numbers"
+          <a href="intro.html" title="Setting up"
              >previous</a> |</li>
         <li><a href="index.html">MyJava 0.1 documentation</a> &raquo;</li> 
       </ul>

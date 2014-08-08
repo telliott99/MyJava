@@ -4,11 +4,15 @@
 Strings
 #######
 
-Here is a first example using the ``String`` class in Java. We initialize a new String variable ``s`` with the value ``"abc"``. 
+Let's take a look at the ``String`` class in Java. We initialize a new String variable ``s`` with the value ``"abc"`` by writing:
 
-To print out each character of the string, we obtain an array by use of the function ``split``, which generates an array (of String values).
+.. sourcecode:: java
 
-The ``for-each`` loop uses a special syntax which assigns each value in an array to the variable ``c`` in succession, and then we print the result.
+    String s = "abc";
+
+To print out each character of the string, first we obtain an array by use of the function ``split``.  This generates an array of Strings of length 1 each.
+
+The ``for-each`` loop uses a special syntax which assigns each value in an array to a variable (``c``) in succession, and then the result is printed.
 
 .. sourcecode:: java
 
@@ -22,7 +26,7 @@ The ``for-each`` loop uses a special syntax which assigns each value in an array
         }
     }
     
-We also use string concatenation when we do ``c + " "``, which puts a space after each character (and an extra one at the end which is invisible here).
+The code ``c + " "`` is a string *concatenation*;  this puts a space after each character (and an extra one at the end which is invisible here).
 
 From the command line:
 
@@ -33,16 +37,41 @@ From the command line:
     a b c 
     >
 
-Other string functions include:
+To examine every character of a String, one could also convert the String to an array of ``char``, something like this:
+
+.. sourcecode:: bash
+
+    for (char c: s.toCharArray()) {
+        System.out.println(c);
+         }
+    }
+    
+Or
+
+.. sourcecode:: java
+
+    for (int i = 0;i < s.length(); i++){
+        System.out.println(s.charAt(i));
+    }
+
+There are lots of other string functions including:
 
     - ``length()``
     - ``charAt(index)``
+    - ``substring(start,stop)``
+    - ``contains(sequence)``
+    - ``startsWith(prefix)``
     - ``toUpperCase()``
-    - ``indexOf(char)``
+    - ``indexOf(string)``
+    - ``lastIndexOf(string,index)``
     - ``trim()``
     - ``replace(c1,c2)``
+    
+Remember that strings are immutable, they can't be changed.  So, if we call a function to change a string, it returns a new string with the desired change.  Calling ``"  leading".trim()`` will return the String ``"leading"``.
 
-Add this to the previous class:
+There are other functions to deal with Unicode, but that is a more advanced topic that we will evade at the moment.
+
+Let's look at ``replace``.  Add this to the previous class:
 
 .. sourcecode:: java
 
@@ -56,7 +85,7 @@ Add this to the previous class:
     a*c
     >
 
-It's worth pointing out that the ``split`` method can take a "regular expression" to split on.  An example might be:
+The ``split`` method can take a "regular expression" to split on.  An example might be:
 
 .. sourcecode:: java
 

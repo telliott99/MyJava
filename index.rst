@@ -12,8 +12,8 @@ Contents:
    :maxdepth: 2
 
    intro
-   rnumbers
    strings
+   rnumbers
    input
    files
    objects

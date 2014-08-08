@@ -51,7 +51,8 @@
             
   <div class="section" id="setting-up">
 <span id="intro"></span><h1>Setting up<a class="headerlink" href="#setting-up" title="Permalink to this headline">¶</a></h1>
-<p>An installer for Java is available from Oracle.  Make sure you do not have the Java plug-in activated in your browser when you&#8217;re done.  I have</p>
+<p>An installer for Java is available from Oracle. At least on OS X, it is required that you install it system-wide, accessible to all users.</p>
+<p>Extensive problems with security (and slow patches) suggest you make sure when you&#8217;re done that the Java plug-in is not activated in your browser.  Checking the version from the command line, I have</p>
 <div class="highlight-bash"><div class="highlight"><pre>&gt; javac -version
 javac 1.8.0_11
 </pre></div>
@@ -78,6 +79,15 @@ Hello.class Hello.java
 &gt;
 </pre></div>
 </div>
+<p>Let&#8217;s unpack the class definition a bit.  First of all, every program needs a <tt class="docutils literal"><span class="pre">main</span></tt> function, a place to start execution.  Here <tt class="docutils literal"><span class="pre">main</span></tt> is the only function contained in the <tt class="docutils literal"><span class="pre">Hello</span></tt> class definition.  (Almost) everything in Java is an object and has a class definition.  Generally speaking there should be one class per file, and that file should have the same name as the class, followed by <tt class="docutils literal"><span class="pre">.java</span></tt>.  We may break this rule in the beginning, putting multiple classes in the same file, just to keep things a bit simpler.</p>
+<p>The <tt class="docutils literal"><span class="pre">main</span></tt> function again:</p>
+<div class="highlight-bash"><div class="highlight"><pre>public static void main<span class="o">(</span>String<span class="o">[]</span> args<span class="o">)</span> <span class="o">{</span>
+    System.out.println<span class="o">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="o">)</span>;
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>The designation <tt class="docutils literal"><span class="pre">public</span></tt> means ___ , while <tt class="docutils literal"><span class="pre">static</span></tt> means __.  The label <tt class="docutils literal"><span class="pre">void</span></tt> means that this function does not produce, or &#8220;return&#8221; any result.  In parentheses are the arguments passed to the function (or just empty parentheses, if there are none).  The function itself is surrounded by brackets &#8220;{ }&#8221;, and consists of the single statement</p>
+<p>a somewhat complicated way of printing the string &#8220;Hello World!&#8221; to the console screen.  The quotation marks indicate this is a <tt class="docutils literal"><span class="pre">String</span></tt> variable.  The <tt class="docutils literal"><span class="pre">println</span></tt> tells the system to add a newline at the end of the character stream.</p>
 </div>
 
 
