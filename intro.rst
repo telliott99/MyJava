@@ -6,7 +6,7 @@ Setting up
 
 An installer for Java is available from Oracle. At least on OS X, it is required that you install it system-wide, accessible to all users.
 
-Extensive problems with security (and slow patches) suggest you make sure when you're done that the Java plug-in is not activated in your browser.  Checking the version from the command line, I have
+Extensive problems with security (and slow patches) suggest you make sure when you're done that the Java plug-in is not activated in your browser.  Checking the compiler version from the command line, I have
 
 .. sourcecode:: bash
 
@@ -46,7 +46,7 @@ Let's unpack the class definition a bit.  First of all, every program needs a ``
 
 The ``main`` function again:
 
-.. sourcecode:: bash
+.. sourcecode:: java
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
@@ -54,7 +54,7 @@ The ``main`` function again:
 
 The designation ``public`` means ___ , while ``static`` means __.  The label ``void`` means that this function does not produce, or "return" any result.  In parentheses are the arguments passed to the function (or just empty parentheses, if there are none).  The function itself is surrounded by brackets "{ }", and consists of the single statement
 
-.. sourcecode: bash
+.. sourcecode:: java
 
     System.out.println("Hello World!");
 

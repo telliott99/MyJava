@@ -4,7 +4,15 @@
 Random Numbers
 ##############
 
-Not much to say about numbers.  Presumably, you know the difference between say, floats and integers.  Random numbers (really "pseudo-random" numbers), can be obtained in a couple ways.  Here we use the function ``random`` from the ``Math`` package (??)
+I don't have much to say about numbers.  If you are looking for online resources, on programming fundamentals I can recommend:
+
+http://www.greenteapress.com/thinkapjava/html/index.html
+
+and at a somewhat more advanced level this book by Sedgewick and Wayne is excellent.
+
+http://introcs.cs.princeton.edu/java/home/
+
+Presumably, you know the difference between say, floats and integers.  Random numbers (really "pseudo-random" numbers), can be obtained in a couple ways.  Here we use the function ``random`` from the ``Math`` package:
 
 .. sourcecode:: java
 
@@ -23,9 +31,9 @@ Not much to say about numbers.  Presumably, you know the difference between say,
     Your random number is: 0.91185
     >
 
-In this version we used a format string ``"  %3.5f", r`` and the function ``printf``. We could get a newline by putting ``"  %3.5f\n", r``, if we did that then we wouldn't need the next call ``System.out.println();``.
+In this version we used a "format string" ``"  %3.5f", r`` and the function ``printf``. We could get a newline by putting ``"  %3.5f\n", r``, if we did that then we wouldn't need the next call ``System.out.println();``.
 
-The main point to make here is that the random number generator gives us a floating point number in the half-open range ``[0,1)``.  (The range includes 0 but not 1---this makes more sense for integers than real numbers).  
+The main point to make here is that the random number generator gives us a floating point number in the half-open range ``[0,1)``.  (The range includes 0 but not 1---although this specification only really makes sense for integers rather than real numbers).  
 
 In the next code sample, we obtain an integer in the range ``[0,N)``:
 
@@ -41,13 +49,13 @@ In the next code sample, we obtain an integer in the range ``[0,N)``:
         }
     }
 
-In the above snippet, we use a *cast* to ``int``, which gives the "floor" or largest integer value that is less than the given floating point number.  In the ``println`` function we also (implicitly) cast from int to a String, which then got concatenated with the first part of the output.  Another way to do this would be to use a "format string" and do:
+In the above snippet, we use a *cast* to ``int``, which gives the "floor" or largest integer value that is less than the given floating point number.  In the ``println`` function we also (implicitly) cast from int to a String, which then got concatenated with the first part of the output.  Another way to do this would be to use a format string and do:
 
 .. sourcecode:: java
 
     System.out.println("Your random integer is: %d", n);
 
-``%d`` is for integers.  Next, let's give the user the ability to input a value for ``N``, as follows.  Add the following line as the first line of the function ``main``:
+``%d`` is the placeholder used for integers inside format strings.  Next, let's give the user the ability to input a value for ``N``, as follows.  Add the following line as the first line of the function ``main``:
 
 .. sourcecode:: java
 
@@ -60,7 +68,7 @@ Here is the result:
     > java RandomInt 1000
     Your random integer is: 659
 
-As you might expect, if the user does not input a number (or inputs a string or something), this code just crashes.  To do this right, we will need to implement the ability to check for and deal appropriately with errors.  We'll come back to this issue later.
+As you might expect, if the user does not input a number (or inputs a string or a smiley face or something else), this code will just crash.  To do this right, we need to implement the ability to check for and deal appropriately with errors.  We'll come back to this issue later.
     
 Finally, we provide the ability to specify a range of integers for the random number:
 
