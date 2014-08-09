@@ -6,7 +6,7 @@ Imports
 
 In the previous object example, all the code was in a single file.  Now what we are going to do is split the code into two files, and compile them separately.  In ``Obj.java``:
 
-.. sourcecode: java
+.. sourcecode:: java
 
     class Obj implements Comparable<Obj> {
         String name;
@@ -26,7 +26,7 @@ In the previous object example, all the code was in a single file.  Now what we 
 
 Next, the code that uses ``Obj`` objects in ``UseObj.java``:
 
-.. sourcecode: java
+.. sourcecode:: java
 
     import java.util.*;
 
@@ -49,7 +49,7 @@ Next, the code that uses ``Obj`` objects in ``UseObj.java``:
         }
     }
 
-.. sourcecode: bash
+.. sourcecode:: bash
 
     > javac ObjStuff.java 
     > java ObjStuff
@@ -61,26 +61,26 @@ As long as both ``Obj.java`` and ``UseObj.java`` are in the same directory and w
 
 Packages are a little more complicated.  Create a new directory
 
-.. sourcecode: bash
+.. sourcecode:: bash
 
     mkdir mystuff
 
 Add the line 
 
-.. sourcecode: java
+.. sourcecode:: java
 
     package mystuff;
 
 at the top of both ``Obj.java`` and ``UseObj.java``.  Compile the first on the Desktop (or in ``mystuff``), then copy the class file to the sub-directory.
 
-.. sourcecode: bash
+.. sourcecode:: bash
 
     > javac Obj.class
     > mv Obj.class mystuff
    
 Now, from the Desktop, do 
 
-.. sourcecode: bash
+.. sourcecode:: bash
 
     > javac UseObj.java
     > mv UseObj.class mystuff
