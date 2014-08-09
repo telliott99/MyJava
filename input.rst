@@ -15,6 +15,14 @@ IO usually refers to input and output from a program by reading from and writing
             }
         }
     }
+    
+The statement
+
+.. sourcecode:: java
+
+    main (String[] args)
+    
+says that the variable ``args`` is an array of String variables.  This array will contain any values entered on the command line after the program name, like so:
 
 .. sourcecode:: bash
 
@@ -23,8 +31,10 @@ IO usually refers to input and output from a program by reading from and writing
     world
     1
     >
+    
+In C or C++ we would have an additional variable to tell how many different values are in the array, but Java takes care of that for us more or less automatically, either by using the for-each construct or by accessing ``args.length`` 
 
-And here is an example that does a check that the argument is the correct type:
+Here is a second example that checks to see that the argument is the correct type:
 
 .. sourcecode:: java
 
@@ -56,7 +66,7 @@ And here is an example that does a check that the argument is the correct type:
 
 The line ``import java.util.*`` is needed for the "exception" type we use:  ``NumberFormatException``.
 
-Here is an example of interactive input from the user:
+And here is an example of interactive input from the user:
 
 .. sourcecode:: java
 

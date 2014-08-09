@@ -12,7 +12,7 @@ Here's an example:
 
     import java.util.*;
 
-    class arrays {
+    class MyArrays {
         public static void main(String[] args) {
             int[] A = { 1, 2, 3, 4, 5 };
                
@@ -43,13 +43,16 @@ The import statement at the top is needed for the ``Arrays.toString`` method, wh
 
     int[] A = { 1, 2, 3, 4, 5 };
     
-combines declaration and initialization.  We go through the array and print the values in three ways:  using a for-each loop and a format string, using the ``Arrays.toString`` method, and using an index that ranges from 0 to ``i < A.length``.  Using the index allows us to print the last value in a special way.
+combines declaration and initialization.  
+
+Then, we go through the array and print the values in three ways:  using a for-each loop and a format string, using the ``Arrays.toString`` method, and using an index that ranges from ``0`` to ``i < A.length``.  Using the index allows us to print the last value in a special way.
 
 The output:
 
 .. sourcecode:: bash
 
-    > java arrays
+    > javac MyArray.java
+    > java MyArray
     1 2 3 4 5 
     [1, 2, 3, 4, 5]
     A:  0: 1, 1: 2, 2: 3, 3: 4, 4: 5.
@@ -76,7 +79,7 @@ We can spiff things up a little by doing the following.  A common usage is to ``
         }
     }
 
-    class arrays {
+    class MyArray {
         public static void main(String[] args) {
             String[] C = { "a","b","c","d","e"};
             StringBuilder sb = new StringBuilder();
@@ -93,15 +96,18 @@ We can spiff things up a little by doing the following.  A common usage is to ``
         }
     }
 
-In the ``main`` function, we examine the contents of our array of Strings in two ways.  First, we use a ``StringBuilder`` to construct a string from a list of values.  (Is there a way to initialize with a list??)  Then we just do ``sb.toString()`` to get the string from it.  In the middle part we test whether the array contains a particular value.  Since the only way to access the array elements directly is using the ``[]`` operator, we must first cast the array using the call:  ``Arrays.asList``.
+In the ``main`` function, we examine the contents of our array of Strings in two ways.  First, we use a ``StringBuilder`` to construct a string from a list of values.  (Is there a way to initialize with a list??)  Then we just do ``sb.toString()`` to get the string from it.  
 
-In the last part of ``main``, we use our ``Joiner`` to class to join the components of the array, inserting the String ``*`` between each element.
+In the middle part we test whether the array contains a particular value.  Since the only way to access the array elements directly is using the ``[]`` operator, we must first cast the array using the call:  ``Arrays.asList``.
+
+In the last part of ``main``, we use the ``Joiner`` class to join the components of the array, inserting the String ``*`` between each element.
 
 Here is the output:
 
 .. sourcecode:: bash
 
-    > java arrays
+    > java MyArray.java
+    > java MyArray
     abcde
     true
     a*b*c*de*

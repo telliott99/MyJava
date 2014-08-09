@@ -108,4 +108,7 @@ The ``split`` method takes a "regular expression" to split on (though a single c
     
 The "pattern" we gave to be matched was ``"[#@\\.]"``.  The quotes enclose the pattern.  The brackets mean *match any one of these characters*, i.e. ``#``, ``@`` or ``\\.``.  The last of these, ``\\.``, is really just a period.  (To understand why we need the double backslash before the period, you should consult a reference on regular expressions).
 
+Note about variable names:  for simple demonstration code I prefer to use simple variable names, often only a single character.  For example, ``s`` is a String (and perhaps ``t`` as well), ``c`` is a char and ``i`` an integer (usually for counting our way through a loop), ``A`` is an array, ``M`` is a map and ``fn`` a filename, and so on.
+
+For real code it can be valuable to give descriptive names to variables, so as to make clear what the function of each is.  However, I find this a distraction for code "snippets", so I generally won't do that here.
     
