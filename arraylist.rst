@@ -1,8 +1,8 @@
-.. _arraylists:
+.. _arraylist:
 
-##########
-ArrayLists
-##########
+#########
+ArrayList
+#########
 
 In a previous section we looked at Java arrays, which are similar to the arrays found in C and C++.
 
@@ -25,7 +25,9 @@ This code does what you'd expect.  It prints:
     1 3 6 4 
     >
 
-However, this type of array has several limitations.  Basically, the only way to work with the values is to access them like ``println(A[2]);``, or use the for-each construct as a way of doing the same thing behind the scenes.  There is a property ``length``.  If we add this:
+However, this type of array has several limitations.  Basically, the only way to work with the values is to access them like ``println(A[2]);``, or use the for-each construct as a way of doing the same thing behind the scenes.
+
+There is also a ``length`` property.  If we add this:
 
 .. sourcecode:: java
 
@@ -37,7 +39,7 @@ we get the additional output:
 
     4
 
-But that's it.  There is no way to sort, or reverse, and such an array can only hold primitive types, not objects, with the exception of Strings.  The size (length) is fixed and cannot be altered.  Finally, one can crash the program by attempting to access an invalid index.
+But that's it.  There is no built-in way to sort the list, or reverse it.  Such an array can only hold primitive types, not objects, with the exception of Strings.  The length (size) is fixed and cannot be altered.  Finally, one can crash the program by attempting to access an invalid index.
 
 Consider this code, which is *almost* correct:
 
@@ -46,7 +48,7 @@ Consider this code, which is *almost* correct:
     class Test {
         public static void main(String[] args) {
             int[] A = { 1, 3, 6, 4 };
-            for (int i=0; i < A.length; i++) {
+            for (int i=0; i <= A.length; i++) {
                 System.out.printf("%d ", A[i]);
             }
             System.out.println();
@@ -61,7 +63,35 @@ Consider this code, which is *almost* correct:
     	at Test.main(Test.java:5)
     >
 
-To solve these problems, Java provides a number of container classes, like the Array List.  Here is an example of how to use this container.  The example shows two ways of making an ArrayList, how to get an iterator to move through one, and a ``sort`` method, which works so long as the objects in the ArrayList have a notion of how to compare one with the other.
+Can you see what the problem is?
+
+To solve these difficulties, Java provides a number of container classes, like the Array List.  Here is an example of how to use this container.
+
+.. sourcecode:: java
+
+    import java.util.*; 
+
+    public class Test {
+        public static void main(String[] args) {
+        List<String> myList = new ArrayList<>();
+        myList.add("Tom"); 
+        myList.add("Joan");
+        for (String s : myList) {
+            System.out.println(s); }
+        } 
+    }
+    
+The import statement is required so that the compiler knows about the names List and ArrayList.  The "concrete" type we are using is an ArrayList, but it is common to declare the type of the variable to be a List, which is technically called an interface.
+
+In the line:
+
+.. sourcecode:: java
+
+    List<String> myList = new ArrayList<>();
+
+We declare a variable ``myList`` which conforms to the interface expected of Lists.  This one holds String objects.  (Older Java examples may not have this).  On the right-hand side we call the constructor for an ArrayList.  The empty ``<>`` is OK because the compiler can infer the type of elements from the declaration on the left-hand side.
+
+The next example shows two slightly different ways of making an ArrayList, the first one uses a special double brackets ``{{  }}`` notation.
 
 .. sourcecode:: java
 
@@ -96,6 +126,17 @@ To solve these problems, Java provides a number of container classes, like the A
         }
     }
 
+A new idea here is shown by the accessory method ``pp`` which prints an ArrayList<String>.  We obtain an iterator to move through one, and the code shown is the characteristic way to use it.
+
+.. sourcecode:: java
+
+    Iterator<String> it = A.iterator();
+    while(it.hasNext()) { 
+        System.out.print(it.next()); 
+    }
+
+We can also call the ``sort`` method, which works so long as the objects in the ArrayList have a notion of how to compare one with the other.
+
 To extend this example, we add something to the ``Obj`` class definition shown previously
 
 .. sourcecode:: java
@@ -122,7 +163,7 @@ The first line has become
 
     class Obj implements Comparable<Obj> {
 
-and we have a new function:
+and we have a new method:
 
 .. sourcecode:: java
 
@@ -148,4 +189,4 @@ From the command line we get the additional output:
     3: Tom
     >
 
-You can see that the objects are sorted lexicographically according to name, but they could be sorted according to any property by changing the ``compareTo`` function.
+You can see that the objects are sorted lexicographically according to name, but they could be sorted according to any property by changing the ``compareTo`` function appropriately.

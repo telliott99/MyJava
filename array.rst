@@ -1,4 +1,4 @@
-.. _arrays:
+.. _array:
 
 ######
 Arrays

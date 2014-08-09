@@ -18,10 +18,12 @@ Contents:
    files
    objects
    imports
-   arrays
-   arraylists
+   array
+   arraylist
+   linkedlist
    maps
    sets
+   default
    
 
 Indices and tables
