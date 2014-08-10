@@ -54,7 +54,7 @@ Or
         System.out.println(s.charAt(i));
     }
 
-There are many other string functions including:
+There are many other string functions.  Some of the most important ones are:
 
     - ``length()``
     - ``charAt(index)``
@@ -67,7 +67,9 @@ There are many other string functions including:
     - ``trim()``
     - ``replace(c1,c2)``
     
-Remember that strings are immutable, they can't be changed.  So, if we call a function to "change" a string, it generates a new string with the desired change and returns it to the caller.  The function ``"  abc".trim()`` will return the String ``"abc"``.
+Remember that strings are immutable, they can't be changed.  You can't do ``s[index] = new_value``.  
+
+So, if we call a function to "change" a string, it generates a new string with the desired change and returns it to the caller.  The function ``"  abc".trim()`` will return the String ``"abc"``.
 
 There are other functions to deal with Unicode, but that is a more advanced topic I would rather evade at the moment.
 

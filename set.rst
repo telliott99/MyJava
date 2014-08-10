@@ -1,8 +1,8 @@
-.. _sets:
+.. _set:
 
-####
-Sets
-####
+###
+Set
+###
 
 .. sourcecode:: java
 

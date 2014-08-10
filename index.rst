@@ -12,18 +12,21 @@ Contents:
    :maxdepth: 2
 
    intro
+   debug
    strings
-   rnumbers
+   numbers
+   random
    input
    files
    objects
    imports
    array
    arraylist
+   map
+   conversions
+   set
    linkedlist
-   maps
-   sets
-   default
+   overload
    
 
 Indices and tables

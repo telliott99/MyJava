@@ -1,18 +1,10 @@
-.. _rnumbers:
+.. _random:
 
 ##############
 Random Numbers
 ##############
 
-I don't have much to say about numbers.  If you are looking for online resources, on programming fundamentals I can recommend:
-
-http://www.greenteapress.com/thinkapjava/html/index.html
-
-and at a somewhat more advanced level this book by Sedgewick and Wayne is excellent.
-
-http://introcs.cs.princeton.edu/java/home/
-
-Presumably, you know the difference between say, floats and integers.  Random numbers (really "pseudo-random" numbers), can be obtained in a couple ways.  Here we use the function ``random`` from the ``Math`` package:
+Random numbers (really "pseudo-random" numbers), can be obtained in a couple ways.  Here we use the function ``random`` from the ``Math`` package:
 
 .. sourcecode:: java
 
