@@ -15,13 +15,13 @@ Contents:
    debug
    strings
    numbers
-   random
    input
    files
    objects
    imports
    array
    arraylist
+   random
    map
    conversions
    set

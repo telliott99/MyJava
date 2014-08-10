@@ -4,7 +4,7 @@
 Random Numbers
 ##############
 
-Random numbers (really "pseudo-random" numbers), can be obtained in a couple ways.  Here we use the function ``random`` from the ``Math`` package:
+Random numbers (really "pseudo-random" numbers), can be obtained in several ways.  Here we use the function ``random`` from the ``Math`` package:
 
 .. sourcecode:: java
 
@@ -87,6 +87,75 @@ And the result:
     143
     >
 
-Actually testing this code, to see that the numbers are approximately uniform, and that the range matches what we specified, is also left for another time.
+Actually testing this code, to see that the numbers are approximately uniform, and that the range matches what we specified will be made easier by factoring the random choice code out into a new class.
+
+######################
+Random Choice, Shuffle
+######################
+
+Here is some code to pick a random item in a list of items, and also to shuffle a list of items randomly.  If you think this code is worth using, I would recommend that you read:
+
+http://en.wikipedia.org/wiki/Random_permutation
+
+and also note that ``Collections.shuffle`` will shuffle an Array List.  :)
+
+The code also shows an introductory example of using generic functions.
+
+.. sourcecode:: java
+
+    import java.util.*;
+
+    class MyRand {  
+        public static int randIntInRange(int min, int max) {
+            double r = Math.random();
+            int range = max - min;
+            return (int) (r * range) + min;  
+        }
+        static public <T> T randomChoice(ArrayList<T> A){
+            int n = A.size();
+            return A.get(randIntInRange(0,n));
+        }
+         static public <T> void randomShuffle(ArrayList<T> A){
+            int n = A.size();
+            int i,j;
+            for (i=0; i < n-2; i++) {
+                j = randIntInRange(i+1,n-1);
+                Collections.swap(A, i, j);
+            }
+        }
+    }
+
+    public class Test {
+        public static void main(String[] args) {
+            ArrayList<Integer> A = new ArrayList<Integer>();
+            for (int i=0; i<10; i++) {
+                A.add(MyRand.randIntInRange(0,10));
+            }
+            System.out.println("A: " + A);
+            ArrayList<String> B = new ArrayList<String>() {{ 
+                add("x");
+                add("y");
+                add("z"); }};
+            System.out.print("B: ");
+            for (int i=0; i<20; i++) {
+                System.out.print(MyRand.randomChoice(B) + " ");
+            }
+            System.out.println();
+            MyRand.randomShuffle(A);
+            System.out.println("A: " + A);
+        }
+    }
+
+Output:
+
+.. sourcecode:: bash
+
+    > javac Test.java 
+    > java Test
+    A: [6, 3, 3, 0, 8, 8, 8, 9, 5, 0]
+    B: y z z y y x x y y z z z x x z z x z y y 
+    A: [8, 3, 5, 6, 9, 8, 0, 3, 8, 0]
+    >
+
 
 
