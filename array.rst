@@ -58,7 +58,9 @@ The output:
     A:  0: 1, 1: 2, 2: 3, 3: 4, 4: 5.
     >
 
-We can spiff things up a little by doing the following.  A common usage is to ``join`` the elements of an array of strings joined by a string separator.  This construct doesn't exist in standard Java, though it does in certain add-on libraries, so we will roll our own:
+We can spiff things up a little by doing the following.  A common usage is to ``join`` the elements of an array of strings joined by a string separator.  This construct doesn't exist in standard Java, though it does in certain add-on libraries.
+
+We will roll our own:
 
 .. sourcecode:: bash
 
@@ -96,7 +98,7 @@ We can spiff things up a little by doing the following.  A common usage is to ``
         }
     }
 
-In the ``main`` function, we examine the contents of our array of Strings in two ways.  First, we use a ``StringBuilder`` to construct a string from a list of values.  (Is there a way to initialize with a list??)  Then we just do ``sb.toString()`` to get the string from it.  
+In the ``main`` function, we examine the contents of our array of Strings in two ways.  First, we use a ``StringBuilder`` to construct a string from a list of values.  Then we just do ``sb.toString()`` to get the string from it.  
 
 In the middle part we test whether the array contains a particular value.  Since the only way to access the array elements directly is using the ``[]`` operator, we must first cast the array using the call:  ``Arrays.asList``.
 

@@ -1,4 +1,4 @@
-.. _conversions:
+.. _collections:
 
 ###########
 Collections

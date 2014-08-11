@@ -66,7 +66,7 @@ Here is a second example that checks to see that the argument is the correct typ
 
 The line ``import java.util.*`` is needed for the "exception" type we use:  ``NumberFormatException``.
 
-And here is an example of interactive input from the user:
+And here is a more extensive example of interactive input from the user:
 
 .. sourcecode:: java
 

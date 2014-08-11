@@ -4,7 +4,9 @@
 Files and IO
 ############
 
-Here is a working example that shows reading from and writing to files in Java, with appropriate concern for failures.  It uses an ArrayList (which we will get to in a later section), and various other objects I don't know much about at the minute.  The main reason to put it here is as a working model when you want to write code to do this.
+Here is a working example that shows reading from and writing to files in Java, with appropriate concern for failures.  It uses an ArrayList (which we will get to in a later section).  
+
+The main reason to put it here is for use as a working model when you want to write code to do this.
 
 .. sourcecode:: java
 

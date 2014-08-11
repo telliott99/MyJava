@@ -19,9 +19,6 @@ In the previous object example, all the code was in a single file.  Now what we 
         public String toString() { 
             return String.format("%d: %s", count, name);
         }
-        public int compareTo(Obj o) {
-            return name.compareTo(o.name);
-        }
     }
 
 Next, the code that uses ``Obj`` objects in ``UseObj.java``:
@@ -57,7 +54,9 @@ Next, the code that uses ``Obj`` objects in ``UseObj.java``:
     Joan
     >
 
-As long as both ``Obj.java`` and ``UseObj.java`` are in the same directory and we don't need any names from ``Obj.java`` other than ``Obj``, this works.  The call ``javac UseObj.java`` results in the separate compilation of both classes.  It also works to first compile ``javac Obj.java`` and then it is just imported when needed.
+As long as both ``Obj.java`` and ``UseObj.java`` are in the same directory and we don't need any names from ``Obj.java`` other than ``Obj``, this works.  The call ``javac UseObj.java`` results in the separate compilation of both classes.  
+
+It also works to first compile ``javac Obj.java`` and then it is just imported when needed.
 
 Packages are a little more complicated.  Create a new directory
 

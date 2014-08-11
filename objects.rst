@@ -4,7 +4,7 @@
 Objects
 #######
 
-Of course, Java is all about "objects" and object-oriented programming.  Here is a relatively simple example where we define our own objects.  The code is in two parts, and should be placed in the single file:  ``ObjStuff.java``.
+Of course, Java is all about "objects" and object-oriented programming.  Here is a relatively simple example where we define our own objects.  The code is in two parts, and for this example should be placed in the single file:  ``ObjStuff.java``.
 
 .. sourcecode:: java
 
@@ -24,6 +24,8 @@ Of course, Java is all about "objects" and object-oriented programming.  Here is
 This part gives the definition of our ``Obj`` class.  The compiler will use the definition to generate objects of this type when we ask for them.  Each object will have its own name, provided by us.  
 
 The class as a whole will keep track of the count of all objects of class ``Obj``.  The variable ``count`` is static, meaning that there is just one per class.  For "instantiation", the programmer will provide a String to use as the ``name``, and the "constuctor" function will be called (it has the same name as the class: ``public Obj(String s)``), during construction the count of objects will be incremented by one.
+
+Once all the objects are constructed, the count remains constant, and each object will know the count of all ``Obj`` objects.
 
 To give a nice printable description of the class, we provide the ``toString`` function.
 

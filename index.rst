@@ -15,6 +15,7 @@ Contents:
    debug
    strings
    numbers
+   format
    input
    files
    objects
@@ -23,10 +24,12 @@ Contents:
    arraylist
    random
    map
-   conversions
+   collections
    set
+   regex
    linkedlist
    overload
+   graphics
    
 
 Indices and tables

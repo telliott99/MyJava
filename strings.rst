@@ -4,15 +4,88 @@
 Strings
 #######
 
-Let's take a look at the ``String`` class in Java. We combine declaration and initialization of a new String variable ``s`` with the value ``"abc"`` by writing:
+Let's take a look at the ``String`` class. Strings are like words, a sequence of letters in a particular order.  The length of a string can be as short as one.  The value of a string is always given surrounded by double quotes, like this:  ``"abc"``.
+
+In Java, any time we declare a new variable, we must give its type, so the following code declares a new String variable, ``s``:
+
+.. sourcecode:: java
+
+    String s;
+    
+We then assign to the variable a value by doing:
+
+.. sourcecode:: java
+
+    s = "abc";
+
+Combine declaration and initialization of a new String variable ``s`` with the value ``"abc"`` by writing:
 
 .. sourcecode:: java
 
     String s = "abc";
 
-To print out each character of the string, first we obtain an array by use of the function ``split``.  This generates an array of Strings of length 1 each.
+To print the value of ``s``:
 
-The ``for-each`` loop uses a special syntax which assigns each value in an array to a variable in succession (here, the String ``c``), and then the result is printed.
+.. sourcecode:: java
+
+    public class Test {
+        public static void main (String[] args) {
+            String s = "abc";
+            System.out.println(s);
+        }
+    }
+    
+Output:
+
+.. sourcecode:: bash
+
+    > javac Test.java 
+    > java Test
+    abc
+    > 
+
+Strings know their length.  Add the line 
+
+.. sourcecode:: java
+
+    System.out.println(s.length());
+    
+Output:
+
+.. sourcecode:: bash
+
+    > javac Test.java 
+    > java Test
+    abc
+    3
+    >
+
+We can iterate through each character as follows:
+
+.. sourcecode:: java
+
+    public class Test {
+        public static void main (String[] args) {
+            String s = "abc";
+            for (int i = 0; i < s.length(); i++) {
+                System.out.print(s.charAt(i) + " ");
+            }
+            System.out.println();
+        }
+    }
+
+Output:
+
+.. sourcecode:: bash
+
+    > javac Test.java 
+    > java Test
+    a b c 
+    >
+
+The code ``c + " "`` is a string *concatenation*;  this places a space after each character.  We got all the output on one line because we used ``System.out.print`` (rather than ``println``) inside the loop.
+
+For another approach to printing out each character of a string, we could also first obtain an array by use of the function ``split`` (more about arrays later).  This generates an array of Strings of length 1 each.
 
 .. sourcecode:: java
 
@@ -25,9 +98,9 @@ The ``for-each`` loop uses a special syntax which assigns each value in an array
             System.out.println();
         }
     }
-    
-The code ``c + " "`` is a string *concatenation*;  this places a space after each character.
 
+The ``for-each`` loop uses a special syntax which uses a single variable (here, the String ``c``), and assigns each value in an array to that variable in succession.  We then print the result.
+    
 From the command line:
 
 .. sourcecode:: bash
@@ -37,37 +110,20 @@ From the command line:
     a b c 
     >
 
-To examine each character of a String, one could also convert the String to an array of ``char``, something like this:
-
-.. sourcecode:: bash
-
-    for (char c: s.toCharArray()) {
-        System.out.println(c);
-         }
-    }
-    
-Or
-
-.. sourcecode:: java
-
-    for (int i = 0;i < s.length(); i++){
-        System.out.println(s.charAt(i));
-    }
-
-There are many other string functions.  Some of the most important ones are:
+There are many string functions.  Some of the most important ones are:
 
     - ``length()``
     - ``charAt(index)``
     - ``substring(start,stop)``
-    - ``contains(sequence)``
+    - ``contains(substring)``
     - ``startsWith(prefix)``
-    - ``toUpperCase()``
-    - ``indexOf(string)``
-    - ``lastIndexOf(string,index)``
+    - ``toUpperCase()``, ``toLowerCase()``
+    - ``indexOf(substring)``
+    - ``lastIndexOf(substring,index)``
     - ``trim()``
     - ``replace(c1,c2)``
     
-Remember that strings are immutable, they can't be changed.  You can't do ``s[index] = new_value``.  
+Strings are immutable, they can't be changed.  You can't do ``s[index] = new_value``.  In fact, the ``[index]`` notation only works with arrays.
 
 So, if we call a function to "change" a string, it generates a new string with the desired change and returns it to the caller.  The function ``"  abc".trim()`` will return the String ``"abc"``.
 
@@ -87,30 +143,6 @@ Let's look at ``replace``.  Add this to the previous class:
     a*c
     >
 
-The ``split`` method takes a "regular expression" to split on (though a single character or a String will also work).  An example might be:
+A word about variable names:  for demonstration code I prefer simple variable names, often only a single character.  For example, ``s`` is *always* a String (and perhaps ``t`` as well), and ``c`` is a char.  ``n`` and ``i`` are integers (``i`` is usually for indexing or counting our way through a loop). ``A`` is an array, ``M`` is a map and ``fn`` a filename, and so on.
 
-.. sourcecode:: java
-
-    public class StringStuff {
-        public static void main (String[] args) {
-            String s = "a#b@c.d";
-            for (String c: s.split("[#@\\.]")) {
-                System.out.print(c + " ");
-            }
-            System.out.println();
-        }
-    }
-
-.. sourcecode:: bash
-
-    > javac StringStuff.java 
-    > java StringStuff
-    a b c d 
-    >
-    
-The "pattern" we gave to be matched was ``"[#@\\.]"``.  The quotes enclose the pattern.  The brackets mean *match any one of these characters*, i.e. ``#``, ``@`` or ``\\.``.  The last of these, ``\\.``, is really just a period.  (To understand why we need the double backslash before the period, you should consult a reference on regular expressions).
-
-Note about variable names:  for simple demonstration code I prefer to use simple variable names, often only a single character.  For example, ``s`` is a String (and perhaps ``t`` as well), ``c`` is a char and ``i`` an integer (usually for counting our way through a loop), ``A`` is an array, ``M`` is a map and ``fn`` a filename, and so on.
-
-For real code it can be valuable to give descriptive names to variables, so as to make clear what the function of each is.  However, I find this a distraction for code "snippets", so I generally won't do that here.
-    
+For real code it can be valuable to give longer and more descriptive names to variables, to make clear what the function of each is.  However, I find this a distraction for code "snippets", so I generally won't do that here.

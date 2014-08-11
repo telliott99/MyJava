@@ -39,7 +39,7 @@ we get the additional output:
 
     4
 
-But that's it.  There is no built-in way to sort the list, or reverse it.  Such an array can only hold primitive types, not objects, with the exception of Strings.  The length (size) is fixed and cannot be altered.  Finally, one can crash the program by attempting to access an invalid index.
+But that's it.  There is no built-in way to sort the list, or reverse it.  Such an array can only hold primitive types, not objects, with the exception of Strings.  The length (number of items) is fixed and cannot be altered.  Finally, one can crash the program by attempting to access an invalid index.  We say that the compiler does not do "bounds checking" on array access.
 
 Consider this code, which is *almost* correct:
 
@@ -99,7 +99,7 @@ The next example shows two slightly different ways of making an ArrayList, the f
 
     class ArrayStuff {
         // iterator
-        public static void pp(ArrayList<String> A) {
+        public static void prettyPrint(ArrayList<String> A) {
             Iterator<String> it = A.iterator();
             while(it.hasNext()) { 
                 System.out.print(it.next()); 
@@ -114,19 +114,19 @@ The next example shows two slightly different ways of making an ArrayList, the f
                 add("y");
                 add("x"); }};
             // iterator
-            pp(C);
+            prettyPrint(C);
             Collections.sort(C);
-            pp(C);
+            prettyPrint(C);
 
             ArrayList<String> D = new ArrayList<String>();
             for (String s: Arrays.asList("j","k","l")) {
                 D.add(s);
             }
-            pp(D);
+            prettyPrint(D);
         }
     }
 
-A new idea here is shown by the accessory method ``pp`` which prints an ArrayList<String>.  We obtain an iterator to move through one, and the code shown is the characteristic way to use it.
+A new idea here is shown by the accessory method ``prettyPrint`` which prints an ArrayList<String>.  We obtain an iterator to move through the ArrayList, and the code shown is the characteristic way to use an iterator.
 
 .. sourcecode:: java
 
@@ -135,7 +135,7 @@ A new idea here is shown by the accessory method ``pp`` which prints an ArrayLis
         System.out.print(it.next()); 
     }
 
-We can also call the ``sort`` method, which works so long as the objects in the ArrayList have a notion of how to compare one with the other.
+We can also call the ``sort`` method, which works so long as the objects in the ArrayList have a notion of how to compare one to another.
 
 To extend this example, we add something to the ``Obj`` class definition shown previously
 

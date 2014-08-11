@@ -4,9 +4,13 @@
 Map
 ###
 
-After the array or ArrayList or LinkedList, the next most useful data structure is the HashMap (called a dictionary in Python).  We can talk generally about this structure as a map, implemented by use of a hash (like md5 or sha256, with which you are probably familiar).  A map associates keys with values, just like a word and its definition contained in a dictionary.
+After the array or ArrayList or LinkedList, the next most useful data structure is the HashMap (called a dictionary in Python).  We can talk generally about this structure as a map, implemented by use of a hash (like md5 or sha256).
 
-One important application of maps is to quickly say whether a particular value or object is present in a collection which may have millions of items.  In an unsorted list, the only way to answer this question is to go through the whole list and examine each item.  Even in a sorted list, one must search.  A binary search with a sorted list is most efficient.  However, keeping a list sorted is a lot of work when items are being added all the time. 
+http://en.wikipedia.org/wiki/MD5
+
+A map associates keys with values, just like association between a word and its definition contained in a dictionary.
+
+One important application of maps is to quickly determine whether a particular value or object is present in a collection, which may have millions of items.  In an unsorted list, the only way to answer this question is to go through the whole list and examine each item.  Even in a sorted list, one must search.  A binary search with a sorted list is most efficient.  However, keeping a list sorted is a lot of work when items are being added all the time. 
 
 A map works by associating an index into an array with each key, so that given the key the implementation can go quickly to that index and retrieve the value.  The HashMap does this by computing a "hash" of the key and using the hash to find the index.  If there is no value corresponding to a particular key one finds out immediately.  
 
@@ -18,35 +22,42 @@ Here is a simple example of a HashMap in Java:
 
     import java.util.*;
 
-    public class Test {
-        public static void main(String[] args){
-            Map<String,String> m = new HashMap<String,String>();
-            m.put("c","cookie");
-            m.put("e","elmo");
-            System.out.println(m.get("c"));
-            for (String s : m.keySet()){
-                System.out.print(s + " ");
-            }
-            System.out.println();
-            System.out.println("keySet: " + m.keySet());
-            System.out.println("values: " + m.values());
-            System.out.println("entries: " + m.entrySet());
-        }
-    }
+      public class Test {
+          public static void main(String[] args){
+              Map<String,String> m = new HashMap<String,String>();
+              m.put("c","cookie");
+              m.put("e","elmo");
+              System.out.println(m.get("c"));
+              for (String k : m.keySet()){
+                  System.out.println(k + " is for " + m.get(k));
+              }
+              System.out.println();
+              System.out.println("keySet: " + m.keySet());
+              System.out.println("values: " + m.values());
+              System.out.println("entries: " + m.entrySet());
+          }
+      }
     
 Output on the command line:
 
 .. sourcecode:: bash
 
-    > javac Test.java
+    > javac Test.java 
     > java Test
     cookie
-    c e 
-    keySet: [c, e]
-    values: [cookie, elmo]
-    entries: [c=cookie, e=elmo]
+    e is for elmo
+    c is for cookie
+
+    keySet: [e, c]
+    values: [elmo, cookie]
+    entries: [e=elmo, c=cookie]
+    >
     
-Map and HashMap are defined in ``java.util`` and one could directly import just those names if you wanted.  The methods to add new key, value pairs are ``put`` and ``get``.  To get all the keys or all the values or both at once we call the methods shown.  As the code suggests, the resulting collections are sets.  They can be iterated as shown in the next bit of code.  If we add this:
+Note that the keys are not in sorted order, nor are they in the order we input them into the map.
+    
+Map and HashMap are defined in ``java.util`` and one could directly import just those names if you wanted.  The methods to add new key, value pairs are ``put`` and ``get``.  To get all the keys or all the values or both at once we call the methods ``keySet()`` and ``values()`` as shown.  
+
+The resulting collections are sets, as suggested by ``keySet()``.  They can be iterated as shown in the next bit of code.  If we add this:
 
 .. sourcecode:: java
 
@@ -110,44 +121,6 @@ A slightly more complicated example, with a dedicated function for printing (``p
             }
             map.remove("a");
             System.out.println(map.containsKey("j"));
-        }
-    }
-
-Another example:
-
-.. sourcecode:: java
-
-    import java.util.*;
-
-    public class Test {
-        private static String[] keysAsArray(Map<String, String> map) {
-            return map.keySet().toArray(new String[map.keySet().size()]); 
-        }
-    
-        private static List<String> keysAsList(Map<String, String> map) { 
-            List<String> list = new ArrayList<String>(map.keySet());
-            return list;
-        }
-    
-        public static void main(String[] args) {
-            Map<String, String> map = new HashMap<>(); 
-            map.put("a","x");
-            map.put("b","y");
-            for (String key : map.keySet()) {
-                System.out.println(key + " " + map.get(key));
-            }
-        
-            // convert keys to array
-            String[] A = keysAsArray(map); 
-            for (String s : A) {
-                System.out.println(s); 
-            }
-            // convert keys to list
-            List<String> L = keysAsList(map); 
-            for (String s : L) {
-                System.out.println(s);
-            }
-        
         }
     }
 

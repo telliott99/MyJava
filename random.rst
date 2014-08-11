@@ -119,7 +119,7 @@ The code also shows an introductory example of using generic functions.
             int n = A.size();
             int i,j;
             for (i=0; i < n-2; i++) {
-                j = randIntInRange(i+1,n-1);
+                j = randIntInRange(i,n-1);
                 Collections.swap(A, i, j);
             }
         }
@@ -137,9 +137,10 @@ The code also shows an introductory example of using generic functions.
                 add("y");
                 add("z"); }};
             System.out.print("B: ");
-            for (int i=0; i<20; i++) {
-                System.out.print(MyRand.randomChoice(B) + " ");
+            for (int i=0; i<30; i++) {
+                 System.out.print(MyRand.randomChoice(B));
             }
+
             System.out.println();
             MyRand.randomShuffle(A);
             System.out.println("A: " + A);
@@ -152,10 +153,46 @@ Output:
 
     > javac Test.java 
     > java Test
-    A: [6, 3, 3, 0, 8, 8, 8, 9, 5, 0]
-    B: y z z y y x x y y z z z x x z z x z y y 
-    A: [8, 3, 5, 6, 9, 8, 0, 3, 8, 0]
+    A: [2, 7, 5, 2, 5, 7, 9, 6, 3, 0]
+    B: yyzzzyzzzxxyzxyxyyyzxxzyxyyzxx
+    A: [9, 7, 2, 3, 2, 5, 5, 7, 6, 0]
+    > java Test
+    A: [3, 7, 4, 8, 6, 4, 2, 5, 4, 5]
+    B: yyxyyzzzyyyyxxzxxxxyzzzyxyxyyx
+    A: [4, 8, 4, 4, 3, 2, 5, 6, 7, 5]
+    > java Test
+    A: [3, 7, 8, 1, 2, 9, 0, 8, 8, 2]
+    B: xyyxyyxzxyxyzzyxyxxxxzyzzxyyzz
+    A: [8, 3, 7, 8, 8, 1, 9, 2, 0, 2]
     >
 
+Note that your output will be different, since the random number generator starts up from a different position each time it runs (I believe it is initialized with the time).  If you wish to have reproducible output (useful for debugging), do:
+
+.. sourcecode:: java
+
+    import java.util.Random;
+
+    class Test {
+        public static void main(String[] args) {
+            int seed = 137;
+            Random gen = new Random(seed);
+            System.out.printf("%3.5f\n", gen.nextFloat());
+        }
+    }
+
+Output:
+
+.. sourcecode:: bash
+
+    > javac Test.java 
+    > java Test
+    0.74163
+    > java Test
+    0.74163
+    > java Test
+    0.74163
+    >
+
+One can also do ``gen.setSeed(seed);``.
 
 
