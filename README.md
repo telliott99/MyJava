@@ -8,3 +8,5 @@ I have also put a zipped copy of the pages, as of this writing, on Dropbox [here
 
 [1]: http://sphinx-doc.org
 [2]: https://dl.dropboxusercontent.com/u/3534458/MyJava.zip
+
+Note:  the index feature does not work properly yet.
