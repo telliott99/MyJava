@@ -29,7 +29,6 @@ Contents:
    regex
    linkedlist
    overload
-   graphics
    
 
 Indices and tables
