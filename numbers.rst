@@ -46,7 +46,7 @@ If you look carefully at what we did, we had
 
     double d = i;
     
-which assigns the value of the integer ``i`` to the double ``d`, a floating point number.  The compiler accepts this happily and "promotes" the value in the process.  But going the other way:
+which assigns the value of the integer ``i`` to the double ``d``, a floating point number.  The compiler accepts this happily and "promotes" the value in the process.  But going the other way:
 
 .. sourcecode:: java
 
