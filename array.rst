@@ -115,3 +115,42 @@ Here is the output:
     a*b*c*de*
     >
 
+Here is another example from Sedgewick and Wayne. (explanation to come):
+
+.. sourcecode:: java
+
+    public class CouponCollector {
+        public static void main(String[] args) {
+            int N = Integer.parseInt(args[0]);
+        
+            // depends on the fact that default value is false
+            boolean[] found = new boolean[N];        
+            int count,values,v;
+            // how many random numbers we've tested
+            count = 0;
+            // how many of the numbers in [0..N) we've seen
+            values = 0;
+        
+            while (values < N) {
+                count += 1;
+                v = (int) (Math.random() * N);  // [0..N)
+                if (found[v]) {
+                    // we already saw this, move on
+                }
+                else {
+                    values += 1;
+                    found[v] = true;
+                }
+            }
+            System.out.println(count + " values tested");
+        }
+    }
+
+    /*
+    > javac CouponCollector.java 
+    > java CouponCollector 100
+    352 values tested
+    > java CouponCollector 100
+    427 values tested
+    >
+    */

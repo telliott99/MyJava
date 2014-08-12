@@ -46,7 +46,7 @@ If you look carefully at what we did, we had
 
     double d = i;
     
-which assigns the value of the integer ``i`` to the double ``d``, a floating point number.  The compiler accepts this happily and "promotes" the value in the process.  But going the other way:
+which assigns the value of the integer ``i`` to the double ``d`, a floating point number.  The compiler accepts this happily and "promotes" the value in the process.  But going the other way:
 
 .. sourcecode:: java
 
@@ -95,4 +95,45 @@ A number of Java methods and class constructors require objects, and do not acce
     If all the hippies, cut off all their hair
     I don't care..
     >
+
+Various classes also contain numeric constants, like ``Math.PI`` and ``Math.E``.  Two other values are ``Double.NEGATIVE_INFINITY`` and ``Integer.MIN_VALUE``.  The last one might be used in a routine to scan an array to find the maximum value.  We start by setting ``max`` to a value that is guaranteed to be less than (or equal to) the smallest possible number in the array.  Then go through the array.  If a value is larger than the current value for max, set max equal to that value.
+
+.. sourcecode:: java
+
+    import java.util.*;
+
+    public class Test {
+        public static void main(String[] args) {
+            int [] A = {12,101,87,37};
+            System.out.print("A: ");
+            for (int i:A) { System.out.printf("%d ", i); }
+            System.out.println();
+
+            // find the maximum value
+            int max = Integer.MIN_VALUE;
+            System.out.printf("Integer.MIN_VALUE %d\n", max);
+
+            for (int i:A) {
+                if (i > max) { max = i; }
+            }
+            System.out.printf("max:  %d\n", max);
+            
+            int high = Integer.MAX_VALUE;
+            System.out.printf("Integer.MAX_VALUE %d\n", high);
+            int x = (int) Math.pow(2,31) - 1;
+            System.out.printf("2^31 - 1 = %d\n", x);
+        }
+    }
+
+.. sourcecode:: bash
+
+    > javac Test.java 
+    > java Test
+    A: 12 101 87 37 
+    Integer.MIN_VALUE -2147483648
+    max:  101
+    Integer.MAX_VALUE 2147483647
+    2^31 - 1 = 2147483646
+    >
     
+

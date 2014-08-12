@@ -15,6 +15,7 @@ Contents:
    debug
    strings
    numbers
+   control
    format
    input
    files
@@ -29,12 +30,5 @@ Contents:
    regex
    linkedlist
    overload
+   libraries
    
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-

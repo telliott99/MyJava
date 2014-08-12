@@ -89,9 +89,9 @@ And the result:
 
 Actually testing this code, to see that the numbers are approximately uniform, and that the range matches what we specified will be made easier by factoring the random choice code out into a new class.
 
-######################
+----------------------
 Random Choice, Shuffle
-######################
+----------------------
 
 Here is some code to pick a random item in a list of items, and also to shuffle a list of items randomly.  If you think this code is worth using, I would recommend that you read:
 
