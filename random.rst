@@ -1,8 +1,8 @@
 .. _random:
 
-##############
-Random Numbers
-##############
+######
+Random
+######
 
 Random numbers (really "pseudo-random" numbers), can be obtained in several ways.  Here we use the function ``random`` from the ``Math`` package:
 

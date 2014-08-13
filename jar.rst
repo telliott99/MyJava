@@ -1,8 +1,8 @@
 .. _jar:
 
-#########################
-Construction of jar files
-#########################
+#########
+Jar files
+#########
 
 Place the following code in a file ``Obj1.java``:
 

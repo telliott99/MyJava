@@ -9,7 +9,7 @@ Welcome to MyJava's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    intro
    debug
@@ -23,6 +23,7 @@ Contents:
    imports
    array
    arraylist
+   sort
    random
    map
    collections
@@ -32,4 +33,4 @@ Contents:
    overload
    libraries
    jar
-   
+   graphics

@@ -1,8 +1,8 @@
 .. _regex:
 
-###################
-Regular Expressions
-###################
+#####
+Regex
+#####
 
 The ``split`` method takes a "regular expression" to split on (though a single character or a String will also work).  An example might be:
 
