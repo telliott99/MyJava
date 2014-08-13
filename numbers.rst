@@ -46,13 +46,13 @@ If you look carefully at what we did, we had
 
     double d = i;
     
-which assigns the value of the integer ``i`` to the double ``d`, a floating point number.  The compiler accepts this happily and "promotes" the value in the process.  But going the other way:
+which assigns the value of the integer ``i`` to the double ``d``, a floating point number.  The compiler accepts this happily and "promotes" the value in the process.  But going the other way:
 
 .. sourcecode:: java
 
     int j = (int) d;
 
-We have to tell the compiler explicitly that we really do mean to convert our float value to an integer.  The notation ``(int) d`` is a "cast", that returns a new value with the "type" of integer.  We can even do this:
+we have to tell the compiler explicitly that we really do mean to convert our float value to an integer.  The notation ``(int) d`` is a "cast", that returns a new value with the "type" of integer.  We can even do this:
 
 .. sourcecode:: java
 

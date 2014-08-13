@@ -62,7 +62,7 @@ Constructing a HashMap from two lists:  unfortunately there is no equivalent to 
         public static void main(String[] args) {
         	String[] keys= {"a", "b", "c"};
         	int[] vals= {1, 2, 3};
-        	HashMap<String, Integer> m= new HashMap<>();
+        	Map<String, Integer> m= new HashMap<>();
         	for(int i= 0; i < keys.length; i++){
         	   m.put(keys[i], vals[i]);
             }

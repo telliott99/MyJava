@@ -26,7 +26,7 @@ For example, "%3.5f" means that a floating point value (here a floating point nu
     pi is equal to 3.14159
     >
 
-To print the formatted string, we call ``System.out.printf`` rather than the usual ``System.out.println``.  Unlike ``println``, ``printf`` does not automatically print a newline at the end of output, so we add the newline character ``\n`` to the string as well.  (Windows users beware, newline is "\r\n" for you).
+To print the formatted string, we call ``System.out.printf`` rather than the usual ``System.out.println``.  Unlike ``println``, ``printf`` does not automatically print a newline at the end of output, so we add the newline character ``\n`` to the string as well.  (Windows users beware, newline is ``\r\n`` for you).
 
 It is also possible to construct a format string using ``String.format``.  After we have the String, ``System.out.println`` works as desired.
 

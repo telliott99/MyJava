@@ -6,7 +6,9 @@ Setting up
 
 An installer for Java is available from Oracle. At least on OS X, it is required that you install it system-wide, accessible to all users.
 
-Extensive problems with security (and slow patches) suggest you make sure when you're done that the Java plug-in is not activated in your browser.  Checking the compiler version from the command line, I have
+Extensive problems with security (and slow patches) suggest you make sure when you're done that the Java plug-in is not activated in your browser.
+
+Checking the compiler version from the command line, I have
 
 .. sourcecode:: bash
 

@@ -55,7 +55,7 @@ Output on the command line:
     
 Note that the keys are not in sorted order, nor are they in the order we input them into the map.
     
-Map and HashMap are defined in ``java.util`` and one could directly import just those names if you wanted.  The methods to add new key, value pairs are ``put`` and ``get``.  To get all the keys or all the values or both at once we call the methods ``keySet()`` and ``values()`` as shown.  
+Map and HashMap are defined in ``java.util`` and one could directly import just those names if you wanted.  The methods to add new (key, value) pairs are ``put`` and ``get``.  To get all the keys or all the values or both at once we call the methods ``keySet()`` and ``values()`` as shown.  
 
 The resulting collections are sets, as suggested by ``keySet()``.  They can be iterated as shown in the next bit of code.  If we add this:
 

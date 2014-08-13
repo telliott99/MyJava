@@ -25,7 +25,7 @@ Random numbers (really "pseudo-random" numbers), can be obtained in several ways
 
 In this version we used a "format string" ``"  %3.5f", r`` and the function ``printf``. We could get a newline by putting ``"  %3.5f\n", r``, if we did that then we wouldn't need the next call ``System.out.println();``.
 
-The main point to make here is that the random number generator gives us a floating point number in the half-open range ``[0,1)``.  (The range includes 0 but not 1---although this specification only really makes sense for integers rather than real numbers).  
+The main point to make here is that the random number generator gives us a floating point number in the half-open range ``[0,1)``.  (The range includes 0 but not 1---although this specification makes much more sense for integers than real numbers).  
 
 In the next code sample, we obtain an integer in the range ``[0,N)``:
 
