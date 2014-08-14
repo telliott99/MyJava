@@ -4,61 +4,124 @@
 Random
 ######
 
-Random numbers (really "pseudo-random" numbers), can be obtained in several ways.  Here we use the function ``random`` from the ``Math`` package:
+In Java, random numbers (which are really "pseudo-random" numbers), can be obtained in several ways.  We can use the function ``random`` from the ``Math`` package:
 
 .. sourcecode:: java
 
-    public class RandomInt { 
-        public static void main(String[] args) { 
+    public class Test { 
+        public static void main(String[] args) {
             double r = Math.random(); 
-            System.out.printf("Your random number is: %3.5f", r);
+            System.out.printf("Your random number is: %7.5f", r);
             System.out.println();
         }
     }
 
 .. sourcecode:: bash
 
-    > javac RandomInt.java 
-    > java RandomInt
-    Your random number is: 0.91185
+    > javac Test.java
+    > java Test
+    Your random number is: 0.57177
     >
 
-In this version we used a "format string" ``"  %3.5f", r`` and the function ``printf``. We could get a newline by putting ``"  %3.5f\n", r``, if we did that then we wouldn't need the next call ``System.out.println();``.
+In this version we used a "format string" ``"  %7.5f", r`` and the function ``printf``. We could get a newline by writing ``"  %7.5f\n", r`` instead, if we did that then we wouldn't need the next call to ``System.out.println();``.
 
-The main point to make here is that the random number generator gives us a floating point number in the half-open range ``[0,1)``.  (The range includes 0 but not 1---although this specification makes more sense for integers than real numbers).  
+The main point to make here is that the random number generator gives us a floating point number in the half-open range ``[0,1)``.  (This range includes 0 but not 1---although this specification makes more sense for integers than real numbers).
 
-In the next code sample, we obtain an integer in the range ``[0,N)``:
+The number you actually see when you run this function will be different (almost) every time), it is random.  :)  However, a random number generator can usually be seeded to generate the same sequence of numbers.  For that you will need to use the ``Random`` class:
 
 .. sourcecode:: java
 
-    public class RandomInt { 
+    import java.util.Random;
+
+    public class Test { 
+        public static void main(String[] args) {
+            int seed = 137;
+            Random rand = new Random(seed);
+            double r = rand.nextDouble();
+            System.out.printf("Your random number is: %7.5f", r);
+            System.out.println();
+        }
+    }
+    
+.. sourcecode:: bash
+
+    > javac Test.java
+    > java Test
+    Your random number is: 0.74163
+    > java Test
+    Your random number is: 0.74163
+    >
+
+In the next code sample, we obtain an integer in the range ``[1,N]``:
+
+.. sourcecode:: java
+
+    import java.util.Random;
+
+    public class Test { 
+        public static int uniformIntInRange(double r, int low, int high) {
+            int range = high - low;
+            return (int) ((r * range) + low);
+        }
+
         public static void main(String[] args) { 
-            double r = Math.random();
-            int N = 11;
-            // a pseudo-random integer between 0 and N-1 (10)
-            int n = (int) (r * N);
+            int seed = 137;
+            Random rand = new Random();
+            // rand.setSeed(seed);
+            double r = rand.nextDouble();
+            int N = 3;
+            // a pseudo-random integer between 1 and N (3) inclusive
+            int n = uniformIntInRange(r, 1, N + 1);
             System.out.println("Your random integer is: " + n);
         }
     }
 
-In the above snippet, we use a *cast* to ``int``, which gives the "floor" or largest integer value that is less than the given floating point number.  In the ``println`` function we also (implicitly) cast from int to a String, which then got concatenated with the first part of the output.  Another way to do this would be to use a format string and do:
+.. sourcecode:: bash
+
+    > javac Test.java
+    > java Test
+    Your random integer is: 1
+    > java Test
+    Your random integer is: 2
+    > java Test
+    Your random integer is: 2
+    > java Test
+    Your random integer is: 1
+    > java Test
+    Your random integer is: 3
+    > java Test
+    Your random integer is: 2
+    >
+    
+In the above snippet, we use a *cast* to int, which gives the "floor" or largest integer value that is less than the given floating point number.  In the ``println`` function we also (implicitly) cast from int to a String, which then got concatenated with the first part of the output.  Another way to do this would be to use a format string and do:
 
 .. sourcecode:: java
 
     System.out.println("Your random integer is: %d", n);
 
-``%d`` is the placeholder used for integers inside format strings.  Next, let's give the user the ability to input a value for ``N``, as follows.  Add the following line as the first line of the function ``main``:
+``%d`` is the placeholder used for integers inside format strings.  Next, let's give the user the ability to input a value for ``N``, as follows.  Add the following line as the first line of the function ``main``, and set the seed:
 
 .. sourcecode:: java
 
-    int N = Integer.parseInt(args[0]);
+    public static void main(String[] args) {
+        int N = Integer.parseInt(args[0]);
+        int seed = 137;
+        Random rand = new Random();
+        rand.setSeed(seed);
+        double r = rand.nextDouble();
+        // a pseudo-random integer between 1 and N inclusive
+        int n = uniformIntInRange(r, 1, N + 1);
+        System.out.println("Your random integer is: " + n);
+    }
 
 Here is the result:
 
 .. sourcecode:: bash
 
-    > java RandomInt 1000
-    Your random integer is: 659
+    > javac Test.java
+    > java Test 1000
+    Your random integer is: 742
+    >
 
 As you might expect, if the user does not input a number (or inputs a string or a smiley face or something else), this code will just crash.  To do this right, we need to implement the ability to check for and deal appropriately with errors.  We'll come back to this issue later.
     
@@ -66,38 +129,38 @@ Finally, we provide the ability to specify a range of integers for the random nu
 
 .. sourcecode:: java
 
-    public class RandomInt { 
-        public static void main(String[] args) { 
-            int min = Integer.parseInt(args[0]);
-            int max = Integer.parseInt(args[1]);
-            double r = Math.random();
-            // a pseudo-random integer in the range min..max
-            int range = max - min;
-            int n = (int) (r * range) + min;
-            System.out.printf("Your random integer is: %d", n);
-            System.out.println();
-        }
+    public static void main(String[] args) {
+        int min = Integer.parseInt(args[0]);
+        int max = Integer.parseInt(args[1]);
+        int seed = 137;
+        Random rand = new Random();
+        rand.setSeed(seed);
+        double r = rand.nextDouble();
+        // a pseudo-random integer between 1 and N inclusive
+        int n = uniformIntInRange(r, min, max + 1);
+        System.out.println("Your random integer is: " + n);
     }
 
 And the result:
 
 .. sourcecode:: bash
 
-    > java RandomInt 135 223
-    143
+    > javac Test.java
+    > java Test 100 125
+    Your random integer is: 119
     >
 
-Actually testing this code, to see that the numbers are approximately uniform, and that the range matches what we specified will be made easier by factoring the random choice code out into a new class.
+It's worth pointing out that ``Math.Random`` and the ``Random`` class provide a number of methods for generating random numbers of different types, and in particular the ``Random`` class has ``nextInt``, ``nextBoolean``, ``nextGaussian``, and so on.
 
 ----------------------
 Random Choice, Shuffle
 ----------------------
 
-Here is some code to pick a random item in a list of items, and also to shuffle a list of items randomly.  If you think this code is worth using, I would recommend that you read:
+Here is some code to pick a random item in a list of items, and also to shuffle a list of items randomly.  To understand more about what we're doing here, I would recommend that you read:
 
 http://en.wikipedia.org/wiki/Random_permutation
 
-and also note that ``Collections.shuffle`` will shuffle an Array List.  :)
+and note that ``Collections.shuffle`` will also shuffle an Array List.  :)
 
 The code also shows an introductory example of using generic functions.
 
