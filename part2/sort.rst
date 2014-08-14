@@ -4,7 +4,7 @@
 Sorting
 #######
 
-Sorting is a very common operation in computer science.  If we have an array of Integers, it's pretty clear what we want when we call for a sorted array.  For Strings, obviously "a" comes before "b", but if we want "A" to sort just the same as "a", we need to take an extra step.
+Sorting is a very common operation in computer science.  If we have an array of Integers, it's pretty clear what we want when we call for a sorted array.  For Strings, obviously "a" comes before "b", but if we want "A" to sort just the same as "a", we need to take an extra step, because *lexicographically*, the capital letters all come after the lowercase letters (based on ASCII encoding).
 
 To extend sorting to objects, let's add something to the ``Obj`` class definition shown previously
 
