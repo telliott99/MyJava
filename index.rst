@@ -18,6 +18,7 @@ Contents:
    control
    format
    input
+   exceptions
    files
    objects
    imports

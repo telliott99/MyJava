@@ -112,16 +112,17 @@ From the command line:
 
 There are many string functions.  Some of the most important ones are:
 
-    - ``length()``
     - ``charAt(index)``
-    - ``substring(start,stop)``
     - ``contains(substring)``
-    - ``startsWith(prefix)``
-    - ``toUpperCase()``, ``toLowerCase()``
     - ``indexOf(substring)``
     - ``lastIndexOf(substring,index)``
-    - ``trim()``
+    - ``length()``
     - ``replace(c1,c2)``
+    - ``split(substring)``
+    - ``startsWith(prefix)``
+    - ``substring(start,stop)``
+    - ``toUpperCase()``, ``toLowerCase()``
+    - ``trim()``
     
 Strings are immutable, they can't be changed.  You can't do ``s[index] = new_value``.  In fact, the ``[index]`` notation only works with arrays.
 

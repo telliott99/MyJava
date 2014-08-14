@@ -14,9 +14,29 @@ I suppose it is possible that I once entered a new program correctly on the firs
     
 Furthermore, errors may reveal themselves upon careful reading, during compilation, or at run-time.  Some errors may even manifest themselves with certain inputs but not with others.  Some logical errors may never be revealed without careful analysis.
 
-Let's restrict ourselves here to errors due to leaving out an import letter or symbol.
+Let's restrict ourselves here to errors due to leaving out an important letter or symbol.
 
-One way to learn about bugs is to start with a program that works and then randomly leave out parts of it.  Find the error in the following versions of ``Hello.java``.  The working code is listed at the end of this section.
+One way to learn about bugs is to start with a program that works and then randomly leave out parts of it.  (Conversely, a good strategy for minimizing bugs is to start with a small program that works, and then make small additions to it, testing at every step).
+
+Here is a working program, in the file ``Hello.java``:
+
+.. sourcecode:: java
+
+    public class Test {
+        public static void main(String[] args) {
+            System.out.print("Hello, World!");
+            System.out.println();
+        }
+    }
+    
+.. sourcecode:: bash
+
+    > javac Test.java
+    > java Test
+    Hello, World!
+    >
+
+Find the error in the following versions of ``Hello.java``:
 
 Example 1:
 
@@ -96,24 +116,6 @@ Example 4:
             System.out.println;
                       ^
     1 error
-    >
-
-Original:
-
-.. sourcecode:: java
-
-    public class Test {
-        public static void main(String[] args) {
-            System.out.print("Hello, World!");
-            System.out.println();
-        }
-    }
-    
-.. sourcecode:: bash
-
-    > javac Test.java
-    > java Test
-    Hello, World!
     >
 
 When debugging, I would suggest that you:

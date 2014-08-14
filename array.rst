@@ -115,7 +115,37 @@ Here is the output:
     a*b*c*de*
     >
 
-Here is another example from Sedgewick and Wayne. (explanation to come):
+Quite to my surprise, I learned that even the basic array type has a sort method.  (To be technically accurate, I should say that the Arrays class has a method that takes an array argument and sorts it, in place).
+
+.. sourcecode:: java
+
+    import java.util.*;
+
+    public class Test{
+        static void pp(int[] a){
+            for (int i: a) {
+                System.out.printf("%d ", i);
+            }
+            System.out.println();
+        }
+    
+        public static void main(String[] args){
+            int[] a = { 6, 1, 2, 4, 3, 0, 5 };
+            pp(a);
+            Arrays.sort(a);
+            pp(a);
+        }
+    }
+
+.. sourcecode:: bash
+
+    > javac Test.java 
+    > java Test
+    6 1 2 4 3 0 5 
+    0 1 2 3 4 5 6 
+    >
+
+Here is another example from Sedgewick and Wayne.  Suppose we have a collection of values like [0:10) and we draw randomly with replacement.  On the average, how long will it take before we see every value (collect every coupon)?
 
 .. sourcecode:: java
 
@@ -124,16 +154,18 @@ Here is another example from Sedgewick and Wayne. (explanation to come):
             int N = Integer.parseInt(args[0]);
         
             // depends on the fact that default value is false
-            boolean[] found = new boolean[N];        
+            boolean[] found = new boolean[N]; 
+                   
             int count,values,v;
             // how many random numbers we've tested
             count = 0;
-            // how many of the numbers in [0..N) we've seen
+            // how many of the numbers in the range have we seen?
             values = 0;
         
             while (values < N) {
                 count += 1;
-                v = (int) (Math.random() * N);  // [0..N)
+                // get a random int from [0..N)
+                v = (int) (Math.random() * N);
                 if (found[v]) {
                     // we already saw this, move on
                 }

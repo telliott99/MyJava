@@ -54,6 +54,33 @@ These next three generate the same output:
     0 1 2 3 4 
     0 1 2 3 4 
     >
+    
+We see the use of ``break`` in the code above.  This ejects us from a loop.  Another common idiom is to truncate the operations in a loop early, but continue with the next iteration, something like this:
+
+.. sourcecode:: bash
+
+    import java.util.Date;
+
+    public class Test {
+        public static void main (String[] args) {
+            String [] a = {"a","b","c","d","e"};
+            String vowels = "ae";
+            for (String s:a) {
+                if (vowels.contains(s)) {
+                    continue;
+                }
+                System.out.print(s + " ");
+            }
+            System.out.println();
+        }
+    }
+
+.. sourcecode:: bash
+
+    > javac Test.java 
+    > java Test
+    b c d 
+    >
 
 It is interesting that, while the construct ``for (int i = 0; i < N; i++) {`` normally has an initialization statement, a boolean, and then an increment, there is some flexibility.
 

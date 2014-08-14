@@ -53,7 +53,7 @@ The image looks like this:
 .. image:: example.png
    :scale: 100 %
 
-Here is a second exampel that also uses ``StdDraw`` and in addition uses ``StdRandom``
+Here is a second example that also uses ``StdDraw`` and in addition uses ``StdRandom``
 
 .. sourcecode:: java
 
@@ -70,6 +70,12 @@ Here is a second exampel that also uses ``StdDraw`` and in addition uses ``StdRa
             System.exit(0);
         }
     }
+    
+.. sourcecode:: bash
+
+    > javac Test.java
+    > java Test 250
+    >
 
 .. image:: gaussian.png
    :scale: 100 %
