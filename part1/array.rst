@@ -115,7 +115,7 @@ Here is the output:
     a*b*c*de*
     >
 
-Quite to my surprise, I learned that even the basic array type has a sort method.  (To be technically accurate, I should say that the Arrays class has a method that takes an array argument and sorts it, in place).
+Quite to my surprise, I learned that even the basic array type can be sorted, the method is in ``Arrays``.  (To be technically accurate, I should say that the Arrays class has a method that takes an array argument and sorts it, in place).
 
 .. sourcecode:: java
 

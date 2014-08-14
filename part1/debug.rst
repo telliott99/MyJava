@@ -165,4 +165,6 @@ The first step toward a solution came when I removed both files:
     Hello, World
     >
 
-How can ``java Hello`` work?  There is no class file on the Desktop.  I infer that there must be another Hello.class somewhere on the computer, and in searching for classes the Java runtime is finding this other class first.  In Python I would look at ``sys.path`` to find the list of directories to search, but I am not sure how to do this in Java yet.  In any case, the take-home lesson is that bugs can be subtle and require inspired use of the scientific method to diagnose them.
+How can ``java Hello`` work?  There is no class file on the Desktop.  I infer that there must be another Hello.class somewhere on the computer, and in searching for classes the Java runtime is finding this other class first, even though the *compiler* finds this one first.  I can tell because the time stamp changes when I compile.
+
+In Python I would look at ``sys.path`` to find the list of directories to search, but I am not sure how to do this in Java yet.  In any case, the take-home lesson is that bugs can be subtle and require inspired use of the scientific method to diagnose them.

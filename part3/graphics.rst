@@ -51,9 +51,9 @@ If you run this in the usual way, it will show the graphic in a window and also 
 The image looks like this:
 
 .. image:: /figures/example.png
-   :scale: 100 %
+   :scale: 75 %
 
-Here are two more examples that also uses ``StdDraw`` and in addition uses ``StdRandom``.  They are taken directly from code on Sedgewick and Wayne's site and/or in the book.
+Here are two more examples that also use ``StdDraw`` and in addition use ``StdRandom``.  They are taken directly from code on Sedgewick and Wayne's site and/or in the book.
 
 .. sourcecode:: java
 
@@ -78,17 +78,28 @@ Here are two more examples that also uses ``StdDraw`` and in addition uses ``Std
     >
 
 .. image:: /figures/gaussian.png
-   :scale: 100 %
+   :scale: 75 %
+   
+The following is spiffed up a little bit.  One problem I couldn't solve easily, how to draw the array of random numbers before *and* after sorting.  The drawing interferes with the sort.  To see what I mean, uncomment the line below.
+
+A relatively easy fix would be to make a copy of the first array, sort that, and then draw both.
 
 .. sourcecode:: java
 
+   import java.util.*;
+
    public class Test {
-       public static void main (String[] args) {
-           int N = 50;
+       public static double[] getNumbers(int N){
            double[] a = new double[N];
+           StdRandom.setSeed(137);
            for (int i = 0; i < N; i++) {
                a[i] = StdRandom.uniform();
            }
+           return a;
+       }
+
+       public static void drawIt(double[] a, String fn) {
+           int N = a.length;
            for (int i = 0; i < N; i++) {
                double x = 1.0*i/N;
                double y = a[i]/2.0;
@@ -96,8 +107,16 @@ Here are two more examples that also uses ``StdDraw`` and in addition uses ``Std
                double rh = a[i]/2.0;
                StdDraw.filledRectangle(x,y,rw,rh);
            }
-               StdDraw.save("dist.png");
-               System.exit(0);
+           StdDraw.save(fn);
+       }
+
+       public static void main (String[] args) {
+           int N = 50;
+           double [] a = getNumbers(N);
+           //drawIt(a, "dist.png");
+           Arrays.sort(a);
+           drawIt(a, "sorted.png");
+           System.exit(0);
        }
    }
        
@@ -108,4 +127,7 @@ Here are two more examples that also uses ``StdDraw`` and in addition uses ``Std
    >
 
 .. image:: /figures/dist.png
-  :scale: 100 %
+  :scale: 75 %
+
+.. image:: /figures/sorted.png
+  :scale: 75 %

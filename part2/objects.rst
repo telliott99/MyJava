@@ -23,9 +23,11 @@ Of course, Java is all about "objects" and object-oriented programming.  Here is
     
 This part gives the definition of our ``Obj`` class.  The compiler will use the definition to generate objects of this type when we ask for them.  Each object will have its own name, provided by us.  
 
-The class as a whole will keep track of the count of all objects of class ``Obj``.  The variable ``count`` is static, meaning that there is just one per class.  For "instantiation", the programmer will provide a String to use as the ``name``, and the "constuctor" function will be called (it has the same name as the class: ``public Obj(String s)``), during construction the count of objects will be incremented by one.
+The class as a whole will keep track of the count of all objects of class ``Obj``.  The variable ``count`` is static, meaning that there is just one per class.  For "instantiation", the programmer will provide a String to use as the ``name``.
 
-Once all the objects are constructed, the count remains constant, and each object will know the count of all ``Obj`` objects.
+The "constuctor" function will be called (it has the same name as the class: ``public Obj(String s)``), during construction the count of objects will be incremented by one.  The constructor is distinguished by not having a return type.
+
+Once all the objects are constructed, the count will remain constant, and each object will know the count of all ``Obj`` objects.
 
 To give a nice printable description of the class, we provide the ``toString`` function.
 
@@ -59,7 +61,9 @@ At the very top of the file add:
     
 The import makes the call ``Arrays.asList`` work.
     
-We "make" or "instantiate" three objects with the variable names shown (and also ``names`` are provided for each).  We make an ``ArrayList`` of the objects (there may be an easier way to do this that I don't know at the moment);  we'll have more to say about arrays and ArrayLists in just a bit.  Notice that this ArrayList has a function ``add`` for adding new elements to the array.
+We "make" or "instantiate" three objects with the variable names shown (and also ``names`` are provided for each).  
+
+We make an ``ArrayList`` of the objects (there may be an easier way to do this that I don't know at the moment);  we'll have more to say about arrays and ArrayLists in just a bit.  Notice that this ArrayList has a function ``add`` for adding new elements to the array.
 
 We use the ``for-each`` construct to iterate through the list and print out the description of each object.
 
