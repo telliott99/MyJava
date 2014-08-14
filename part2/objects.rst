@@ -171,4 +171,4 @@ and the test harness:
     Meoww
     >
 
-``Animal`` is an abstract class.  You can't make an ``Animal``.  But because ``Cat`` and ``Dog`` objects are both ``Animal`` object, we can declare them as such:  ``Animal d = new Dog();`` and we can put together inside an ``ArrayList<Animal>``.  That's very powerful.
+``Animal`` is an abstract class.  You can't make an ``Animal``.  But because ``Cat`` and ``Dog`` objects are both ``Animal`` objects, we can declare them as such:  ``Animal d = new Dog();`` and we can put them together inside an ``ArrayList<Animal>``.  That's very powerful.
