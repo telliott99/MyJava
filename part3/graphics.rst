@@ -50,7 +50,7 @@ If you run this in the usual way, it will show the graphic in a window and also 
 
 The image looks like this:
 
-.. image:: example.png
+.. image:: /figures/example.png
    :scale: 100 %
 
 Here is a second example that also uses ``StdDraw`` and in addition uses ``StdRandom``
@@ -77,5 +77,5 @@ Here is a second example that also uses ``StdDraw`` and in addition uses ``StdRa
     > java Test 250
     >
 
-.. image:: gaussian.png
+.. image:: /figures/gaussian.png
    :scale: 100 %

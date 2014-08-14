@@ -17,6 +17,10 @@ We then assign to the variable a value by doing:
 .. sourcecode:: java
 
     s = "abc";
+    
+A word about variable names:  for demonstration code I prefer simple variable names, often only a single character.  For example, ``s`` is *always* a String (and perhaps ``t`` as well), and ``c`` is a char.  ``n`` and ``i`` are integers (``i`` is usually for indexing or counting our way through a loop). ``A`` is an array, ``M`` is a map and ``fn`` a filename, and so on.
+
+For real code it can be valuable to give longer and more descriptive names to variables, to make clear what the function of each is.  However, I find this a distraction for code "snippets", so I generally won't do that here.
 
 Combine declaration and initialization of a new String variable ``s`` with the value ``"abc"`` by writing:
 
@@ -126,9 +130,9 @@ There are many string functions.  Some of the most important ones are:
     
 Strings are immutable, they can't be changed.  You can't do ``s[index] = new_value``.  In fact, the ``[index]`` notation only works with arrays.
 
-So, if we call a function to "change" a string, it generates a new string with the desired change and returns it to the caller.  The function ``"  abc".trim()`` will return the String ``"abc"``.
+So, if we call a function to "change" a string, it generates a new string with the desired change and returns it to the caller.  The function ``"aBC".toLowerCase()`` will return the String ``"abc"``.
 
-There are other functions to deal with Unicode, but that is a more advanced topic I would rather evade at the moment.
+There are other functions to deal with Unicode, but that's a more advanced topic I would rather evade at the moment.
 
 Let's look at ``replace``.  Add this to the previous class:
 
@@ -143,7 +147,3 @@ Let's look at ``replace``.  Add this to the previous class:
     a b c 
     a*c
     >
-
-A word about variable names:  for demonstration code I prefer simple variable names, often only a single character.  For example, ``s`` is *always* a String (and perhaps ``t`` as well), and ``c`` is a char.  ``n`` and ``i`` are integers (``i`` is usually for indexing or counting our way through a loop). ``A`` is an array, ``M`` is a map and ``fn`` a filename, and so on.
-
-For real code it can be valuable to give longer and more descriptive names to variables, to make clear what the function of each is.  However, I find this a distraction for code "snippets", so I generally won't do that here.

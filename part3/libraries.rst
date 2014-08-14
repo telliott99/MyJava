@@ -147,5 +147,6 @@ The "<" is a Unix redirect that feeds the file directly to the Java program.
 
 A new window opens and the points are plotted.  Here is a screenshot of the result.  You have to quit the window application to terminate.
 
-.. image:: USA.png
-   :scale: 125 %
+.. image:: /figures/USA.png
+   :scale: 100 %
+

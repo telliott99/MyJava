@@ -4,17 +4,19 @@
 Numbers
 #######
 
-I don't have a lot to say about numbers.  If you are looking for online resources on programming fundamentals I can recommend:
+You can read elsewhere about all the different types of numbers and the operators that work on them.  
+
+If you are new to programming and looking for online resources on programming fundamentals I can recommend:
 
 http://www.greenteapress.com/thinkapjava/html/index.html
 
-and at a somewhat more advanced level this book by Sedgewick and Wayne is excellent.
+At a somewhat more advanced level this book by Sedgewick and Wayne is really excellent.
 
 http://introcs.cs.princeton.edu/java/home/
 
-There are several different types of integers, as well as several types of floating point numbers.  These differ by how many bits are used to represent them.  A ``double`` is a floating point number with twice the precision (twice the number of digits) as a ``float``.  These are useful for approximately 15 and 7 places, respectively.  Similarly ``long``, ``int``, ``short`` and ``byte`` are different forms of integer, which differ in their maximum values, again, because of the number of bits used to represent them inside the program.
+These different types of floating point number (think:  scientific notation) differ by how many bits are used to represent them.  A ``double`` is a floating point number with twice the precision (twice the number of digits) as a ``float``.  These are useful for approximately 15 and 7 places, respectively.  Similarly ``long`` (64), ``int`` (32), ``short`` (16) and ``byte`` (8) are different forms of integer, which differ in their maximum values, again, because of the number of bits used to represent them inside the program, as listed.
 
-One point worth mentioning is that changes from one type of a number to another may happen implicitly, if the change conserves information, but the other direction requires a cast.  Here is an example with floats (floating point numbers) and integers:
+One point worth mentioning is that a change from one type of a number to another may happen implicitly, if the change conserves information, but the other direction requires a cast.  Here is an example with floats (floating point numbers) and integers:
 
 .. sourcecode:: java
 
@@ -67,6 +69,9 @@ we have to tell the compiler explicitly that we really do mean to convert our fl
     > 
 
 Oops.
+
+Operators have different precendence:  for example ``*`` (multiplication) is evaluated before ``+`` (addition).  Thus
+``3 + 5 * 2`` is equal to 30, not 16.  However, it is wiser not to rely on the rules, if for no other reason than to make your intention clear.  Do this:  ``3 + (5 * 2)``.
 
 A number of Java methods and class constructors require objects, and do not accept the ``int`` and ``double`` types.  To convert to an Integer object, do this:
 

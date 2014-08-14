@@ -9,29 +9,8 @@ Welcome to MyJava's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
-   intro
-   debug
-   strings
-   numbers
-   control
-   format
-   input
-   exceptions
-   files
-   objects
-   imports
-   array
-   arraylist
-   sort
-   random
-   map
-   collections
-   set
-   regex
-   linkedlist
-   overload
-   libraries
-   jar
-   graphics
+   part1/index
+   part2/index
+   part3/index
