@@ -53,7 +53,7 @@ The image looks like this:
 .. image:: /figures/example.png
    :scale: 100 %
 
-Here is a second example that also uses ``StdDraw`` and in addition uses ``StdRandom``
+Here are two more examples that also uses ``StdDraw`` and in addition uses ``StdRandom``.  They are taken directly from code on Sedgewick and Wayne's site and/or in the book.
 
 .. sourcecode:: java
 
@@ -79,3 +79,33 @@ Here is a second example that also uses ``StdDraw`` and in addition uses ``StdRa
 
 .. image:: /figures/gaussian.png
    :scale: 100 %
+
+.. sourcecode:: java
+
+   public class Test {
+       public static void main (String[] args) {
+           int N = 50;
+           double[] a = new double[N];
+           for (int i = 0; i < N; i++) {
+               a[i] = StdRandom.uniform();
+           }
+           for (int i = 0; i < N; i++) {
+               double x = 1.0*i/N;
+               double y = a[i]/2.0;
+               double rw = 0.4/N;
+               double rh = a[i]/2.0;
+               StdDraw.filledRectangle(x,y,rw,rh);
+           }
+               StdDraw.save("dist.png");
+               System.exit(0);
+       }
+   }
+       
+.. sourcecode:: bash
+
+   > javac Test.java
+   > java Test
+   >
+
+.. image:: /figures/dist.png
+  :scale: 100 %
