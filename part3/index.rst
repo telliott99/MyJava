@@ -11,4 +11,5 @@ Contents:
    overload
    libraries
    jar
+   stdin
    graphics
