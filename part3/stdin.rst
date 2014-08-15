@@ -36,8 +36,6 @@ Let's start by looking at the input and output.  We have two files:
 
 We've read input from two sources here.  One is a file whose name was obtained as a String on the command line (``x.txt``).  The other is a file whose data was piped into ``System.in`` (filename ``y.txt``).  This functionality is wrapped by ``In`` and ``StdIn``.  Our code is:
 
-import java.util.*;
-
 .. sourcecode:: java
 
     import java.util.*;
@@ -73,117 +71,135 @@ We have a utility function to print an int array, then in the first part of ``ma
 
 A simple array can hold them, because in the background ``readAllInts`` has already constructed the collection and so *we know how many ints we have*.
 
-In the second part of ``main``, we read from the file that has been redirected.  At this point, we could stop.  We can simply use this functionality any time we want to input data by either of these methods.
+In the second part of ``main``, we read from the file that has been redirected.  At this point, we could move on.  We can simply use this functionality any time we want to input data by either of these methods.
 
-However, it might be useful to look a closer look at how the magic is achieved.  It may help to write a program for a programming assignment that requires you to do everything with the Java utilities.  We will look at ``In`` (and save ``StdIn`` for the motivated reader).  I copied out the relevant sections of the library file.  The biggest change I made is to add the label ``static`` in a bunch of places (I have to explore yet how they got away without this).
+However, it might be helpful to look a closer look at how the magic is achieved.  It may help if you need to write a program for a programming assignment that requires you to do everything with the Java utilities.  
+
+We will look at ``In`` (and save ``StdIn`` for the motivated reader).  What I did was to copy out the relevant sections of the library file, then fix all the bugs this generated.  Then I broke the code up into more small methods.
 
 To summarize the steps in the code:
 
     - try to read a filename from ``args[0]``
     - use a ``Scanner`` to read the file
     - construct a ``String[]`` from the file data
-    - convert each string to an ``int``
+    - convert each string in the array to an ``int``
     
-For the first two steps, we exit gracefully upon failure.  This code will still fail miserably, if the file does not contain the expected data.
+For the first two steps, we exit gracefully upon failure.  Another point of concern is mis-configured data.  If the data file has a string that can't be converted to an int, we need to deal with that, and I added code to accomplish that.
 
 A successful run:
 
 .. sourcecode:: bash
 
     > javac Test.java 
-    > java Test x.txt
-    2 4 6 
-    > java Test x.txt
-    Exception in thread "main" java.lang.NumberFormatException: For input string: "what"
-    	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
-    	at java.lang.Integer.parseInt(Integer.java:580)
-    	at java.lang.Integer.parseInt(Integer.java:615)
-    	at Test.main(Test.java:70)
     > cat x.txt
-    2 what 6
+    1 what 3
+    > java Test x.txt
+    1 3 
     >
 
-If our data file contains a string that can't be converted to an integer, it blows up.  Of course, having found this problem we could either wrap *it* in a try-catch block or we could just skip that string.  It would also be a good idea to check the lengths of the arrays carefully, in that case.
-
-In any event, this should serve as an example of how to do things right.  And also, it shows just how complicated dealing with user input can be.
+I won't go through the code in detail.  I hope that by this point it mostly makes sense to you.  In any event, this should serve as a model of how to do things right.  It also shows just how complicated dealing with user input can be.
 
 .. sourcecode:: java
 
     import java.io.File;
     import java.io.IOException;
+    import java.lang.NumberFormatException;
+    import java.util.Arrays;
     import java.util.Scanner;
     import java.util.Locale;
     import java.util.regex.Pattern;
 
 
     public class Test {
-        private static Scanner scanner;
-        private static final String CHARSET_NAME = "UTF-8";
-        private static final Locale LOCALE = Locale.US;
-        private static final Pattern WHITESPACE_PATTERN
-            = Pattern.compile("\\p{javaWhitespace}+");
-        private static final Pattern EVERYTHING_PATTERN
-            = Pattern.compile("\\A");
-    
-        public static String[] readAllStrings() {
-            // we could use readAll.trim().split(), but that's not consistent
-            // since trim() uses characters 0x00..0x20 as whitespace
-            String[] tokens = WHITESPACE_PATTERN.split(readAll());
-            if (tokens.length == 0 || tokens[0].length() > 0)
-                return tokens;
-            String[] decapitokens = new String[tokens.length-1];
-            for (int i = 0; i < tokens.length-1; i++)
-                decapitokens[i] = tokens[i+1];
-            return decapitokens;
-        }
+        private static Scanner scanner;  // global variable !
 
-        public static int[] readAllInts() {
-            String[] fields = readAllStrings();
-            int[] vals = new int[fields.length];
-            for (int i = 0; i < fields.length; i++)
-                vals[i] = Integer.parseInt(fields[i]);
-            return vals;
-        }
-
-        public static String readAll() {
-            if (!scanner.hasNextLine()) {
-                return "";
-            }
-            String result = scanner.useDelimiter(EVERYTHING_PATTERN).next();
-            // not that important to reset delimeter, since now scanner is empty
-            scanner.useDelimiter(WHITESPACE_PATTERN); // but let's do it anyway
-            return result;
-        }
-
-        public static void main (String[] args) {
-            String s = "";
-            try {
-                s = args[0];
-            }
+        public static String getFilename (String[] args){
+            String fn = "";
+            try { fn = args[0]; }
             catch (ArrayIndexOutOfBoundsException e) {
                 System.err.println("No filename was given.");
                 System.exit(1);
             }
+            return fn;
+        }
+
+        public static void openFile (String fn) {
+            String CHARSET_NAME = "UTF-8";
+            Locale LOCALE = Locale.US;
             try {
-                File file = new File(s);
+                File file = new File(fn);
                 if (file.exists()) {
                     scanner = new Scanner(file, CHARSET_NAME);
                     scanner.useLocale(LOCALE);
                 }
             }
             catch (IOException ioe) {
-                System.err.println("Could not open " + s);
+                System.err.println("Could not open " + fn);
                 System.exit(1);
             }
-            String[] fields = readAllStrings();
-            int[] vals = new int[fields.length];
-            for (int i = 0; i < fields.length; i++) {
-                vals[i] = Integer.parseInt(fields[i]);
+        }
+
+        public static int[] readAllInts(String[] tokens) {
+            int[] vals = new int[tokens.length];
+            int i = 0, j = 0;
+            while (true) {
+                // we may fail to convert a token to an int
+                if (i == tokens.length) { break; }
+                try { 
+                    int value = Integer.parseInt(tokens[i]); 
+                    vals[j] = value;
+                }
+                catch (NumberFormatException e) { 
+                    vals[j] = 0; 
+                    j--; 
+                }
+                i++;
+                j++;
             }
-            for (int i:vals) {
+            if (i != j) {  // we did have an issue
+                // return a copy of the values up to index j
+                return Arrays.copyOfRange(vals,0,j);
+            }
+            return vals;
+        }
+
+        public static String[] readAllStrings(String text) {
+            Pattern WHITESPACE_PATTERN
+                = Pattern.compile("\\p{javaWhitespace}+");
+            String[] tokens = WHITESPACE_PATTERN.split(text);
+            if (tokens.length == 0 || tokens[0].length() > 0)
+                return tokens;
+            // funny way to pop() tokens [0]
+            String[] decapitokens = new String[tokens.length-1];
+            for (int i = 0; i < tokens.length-1; i++)
+                decapitokens[i] = tokens[i+1];
+            return decapitokens;
+        }
+
+        public static String readAll() {
+            // this is just a trick to get the whole content
+            Pattern EVERYTHING_PATTERN
+                = Pattern.compile("\\A");
+            if (!scanner.hasNextLine()) {
+                return "";
+            }
+            scanner.useDelimiter(EVERYTHING_PATTERN);
+            return scanner.next();
+            // not  important to reset delimeter
+            // since now scanner is empty
+        }
+
+        public static void main (String[] args) {
+            String fn = getFilename(args);
+            openFile(fn);  // uses global Scanner
+            String text = readAll();
+            String [] tokens = readAllStrings(text);
+            int[] vals = readAllInts(tokens);
+             for (int i:vals) {
                 System.out.print(i + " ");
             }
             System.out.println();
         }
     }
 
+    
