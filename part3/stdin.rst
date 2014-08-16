@@ -75,7 +75,7 @@ In the second part of ``main``, we read from the file that has been redirected. 
 
 However, it might be helpful to look a closer look at how the magic is achieved.  It may help if you need to write a program for a programming assignment that requires you to do everything with the Java utilities.  
 
-We will look at ``In`` (and save ``StdIn`` for the motivated reader).  What I did was to copy out the relevant sections of the library file, then fix all the bugs this generated.  Then I broke the code up into more small methods.
+We will look at ``In``, fist and save ``StdIn`` for the end.  What I did was to copy out the relevant sections of the library file, then fix all the bugs this generated.  Then I broke the code up into more small methods.
 
 To summarize the steps in the code:
 
@@ -202,4 +202,46 @@ I won't go through the code in detail.  I hope that by this point it mostly make
         }
     }
 
+And here is ``StdIn``, refactored.  One curious thing about ``StdIn`` (and ``StdDraw``) is that you just use the methods from the class, without ever instantiating an object.  The way they do that is that the constructor for ``StdIn`` looks like this:  ``private StdIn() { }``.  Since there is a constructor defined, the compiler wants to call it when do something like ``new StdIn();``.  But since its ``private``, you can't call the constructor!
+
+Anyway, here is the guts of that class transplanted to our ``Test`` bed:
+
+.. sourcecode:: java
+  
+    import java.io.BufferedInputStream;
+    import java.util.Scanner;
+    import java.util.Locale;
+
+    public class Test {
+        public static String CHARSET_NAME = "UTF-8";
+        public static Locale LOCALE = Locale.US;
+        public static Scanner getScanner () {
+            Scanner sc;
+            BufferedInputStream buf = new BufferedInputStream(System.in);
+            sc = new Scanner(buf, CHARSET_NAME);
+            sc.useLocale(LOCALE);
+            return sc;
+        }
+        public static void main (String[] args) {
+            Scanner sc = getScanner();
+            while (sc.hasNext()) {
+                try {
+                    int n = sc.nextInt()
+                    System.out.println(n);
+                }
+                catch (Exception e) {
+                    // don't do anything
+                    continue;
+                }
+            }
+        }
+    }
+
+.. sourcecode:: bash
     
+    > javac Test.java 
+    > java Test < x.txt
+    1
+    2
+    3
+    >

@@ -4,7 +4,7 @@
 Strings
 #######
 
-Let's take a look at the ``String`` class. Strings are like words, a sequence of letters in a particular order.  The length of a string can be as short as one.  The value of a string is always given surrounded by double quotes, like this:  ``"abc"``.
+Let's take a look at the ``String`` class. Strings are like words, a sequence of letters in a particular order.  The length of a string can be as short as one.  The value of a string is always given surrounded by double quotes, like this:  ``"abc"``.  This value by itself is called a string literal.
 
 In Java, any time we declare a new variable, we must give its type, so the following code declares a new String variable, ``s``:
 

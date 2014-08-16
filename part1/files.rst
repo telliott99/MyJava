@@ -45,3 +45,14 @@ The main reason to put it here is for use as a working model when you want to wr
         	}	
     	}
     }
+    
+
+.. sourcecode:: bash
+
+    javac IOStuff.java 
+    > java IOStuff
+    35
+    import java.util.*;
+    > cat out.txt
+    Sat Aug 16 15:04:48 EDT 2014
+    >

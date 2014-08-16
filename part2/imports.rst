@@ -8,7 +8,7 @@ In the previous object example, all the code was in a single file.  Now what we 
 
 .. sourcecode:: java
 
-    class Obj implements Comparable<Obj> {
+    class Obj {
         String name;
         // counter for total number of objects
         static int count = 0;
@@ -20,8 +20,10 @@ In the previous object example, all the code was in a single file.  Now what we 
             return String.format("%d: %s", count, name);
         }
     }
+    
+Often at this point people will put the label public on ``Obj``, as in ``public class Obj ..``.  We won't need that here.  Also, previously, when we had both classes in the same file, there is a Java rule that only one class in a code file can be public, and it should be the one that has the same name as the file.  So that's why we didn't have ``public`` there before.
 
-Next, the code that uses ``Obj`` objects in ``UseObj.java``:
+Here is our class that uses ``Obj`` objects in ``UseObj.java``:
 
 .. sourcecode:: java
 
@@ -38,21 +40,19 @@ Next, the code that uses ``Obj`` objects in ``UseObj.java``:
             for (Obj o: Arrays.asList(o1,o2,o3)){
                 A.add(o);
             }
-            System.out.println("unsorted:");
-            for (Obj o:A) { System.out.println(o); }
-            System.out.println("sorted:  ");
-            Collections.sort(A);
             for (Obj o:A) { System.out.println(o); }
         }
     }
 
 .. sourcecode:: bash
 
-    > javac ObjStuff.java 
-    > java ObjStuff
-    Tom
-    Joan
-    >
+    > javac UseObj.java 
+    > java UseObj
+    1: Tom
+    2: Tom
+    3: Tom
+    3: Joan
+    3: Sean
 
 As long as both ``Obj.java`` and ``UseObj.java`` are in the same directory and we don't need any names from ``Obj.java`` other than ``Obj``, this works.  The call ``javac UseObj.java`` results in the separate compilation of both classes.  
 
@@ -86,13 +86,8 @@ Now, from the Desktop, do
     > java mystuff/UseObj
     1: Tom
     2: Tom
-    unsorted:
     3: Tom
     3: Joan
     3: Sean
-    sorted:  
-    3: Joan
-    3: Sean
-    3: Tom
     >
 

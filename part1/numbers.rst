@@ -4,7 +4,9 @@
 Numbers
 #######
 
-You can read elsewhere about all the different types of numbers and the operators that work on them.  
+You can read elsewhere about all the different types of numbers and the operators that work on them.  For a quick review
+
+http://docstore.mik.ua/orelly/java-ent/jnut/ch02_04.htm 
 
 If you are new to programming and looking for online resources on programming fundamentals I can recommend:
 

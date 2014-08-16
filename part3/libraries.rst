@@ -8,27 +8,31 @@ It's very useful to be able to download and use new Java code written by someone
 
 http://introcs.cs.princeton.edu/java/home/
 
-One of the resources on that site is a collection of classes packaged into a ``jar`` file, which is like a zip or archive file, but one which Java knows how to navigate, finding the classes packaged inside.
+One of the resources on that site is a collection of classes packaged into a ``jar`` file, which is a zip or archive file, but it has a manifest that shows Java how to navigate it and extract classes packaged inside.
 
 The link to the jar file is on this page
 
 http://introcs.cs.princeton.edu/java/stdlib/
 
-and this is the link
+and this is the actual download link
 
 http://introcs.cs.princeton.edu/java/stdlib/stdlib.jar
 
-As the docs say, there are several possibilities to use the jar file after downloading it.  One way is to "un-jar" it:
+As the docs say, there are several possibilities to use the jar file after downloading it.  One way is to "un-jar" it.  (The usage is styled after ``tar``, where the flag ``-x`` means to un-archive).
 
 .. sourcecode:: bash
 
     > jar xf stdlib.jar
-
-(The usage is styled after ``tar``, where the flag ``-x`` means to un-archive).
     
-It will really make a mess if you do this on your Desktop.  Another possibility is to just grab the particular ``.java`` file that you need to import from the website, and then do what we've been doing all along.
+It will really make a mess if you do this on your Desktop.  
 
-However, the normal way to handle this is to set the "classpath", the list of directories where Java should look for class definitions.  Here is ``Test.java`` on the Desktop:
+Another possibility is to just grab the particular ``.java`` file that you need to import from the website, and then do what we've been doing all along.  One can also extract just one file from the jar file:
+
+.. sourcecode:: bash
+
+    > jar xf stdlib.jar  StdOut.class
+
+However, the usual way to handle this is to set the "classpath", the list of directories where Java should look for the user's class definitions.  Here is ``Test.java`` on the Desktop:
 
 .. sourcecode:: java
 
@@ -53,7 +57,7 @@ If I don't do anything, I can't load the classes I need:
     1 error
     >
 
-I need to tell the compiler and the Java runtime where to find this code.
+I need to tell the compiler and the Java runtime where to find the code for ``StdOut``.
 
 .. sourcecode:: bash
 
@@ -62,7 +66,7 @@ I need to tell the compiler and the Java runtime where to find this code.
     Hello StdOut World
     >
 
-The "flag" -cp places the ``stdlib.jar`` in the current directory (that's the ".") on the classpath.
+The "flag" -cp places the ``stdlib.jar`` in the current directory (that's the ".") on the classpath.  The colon is used as a separator for the path rather than the usual ``/``.
 
 It's a pain to type this every time.  One solution is to use an alias.  I checked to make sure that the command ``c`` by itself doesn't do anything on the command line.  A check of ``r`` shows that it does, but I can live without that for now (it runs the statistical software R, and I'm not so into statistics at the moment).
 
@@ -145,7 +149,7 @@ We compile and run it as follows:
 
 The "<" is a Unix redirect that feeds the file directly to the Java program.
 
-A new window opens and the points are plotted.  Here is a screenshot of the result.  You have to quit the window application to terminate.
+A new window opens and the points are plotted.  Here is a screenshot of the result.  You have to quit using the menu in the window application to terminate.
 
 .. image:: /figures/USA.png
    :scale: 75 %

@@ -4,6 +4,8 @@
 Jar files
 #########
 
+In this section we'll construct and use a jar file.
+
 Place the following code in a file ``ObjA.java``:
 
 .. sourcecode:: java
@@ -26,7 +28,7 @@ Make another file that is identical except for the substitution of ``ObjB`` for 
     > javac ObjA.java 
     > javac ObjB.java
 
-Put code for this class which uses the first two classes into ``ObjStuff.java``
+Put this code for a class which uses the first two classes into ``ObjStuff.java``
 
 .. sourcecode:: java
 
@@ -39,7 +41,7 @@ Put code for this class which uses the first two classes into ``ObjStuff.java``
         }
     }
 
-Test that everything works:
+Test that everything works from the Desktop (or whatever directory you prefer):
 
 .. sourcecode:: bash
 
@@ -84,9 +86,13 @@ It works!  Move the jar file to ``/Library/Java/Extensions``:
     	at ObjStuff.main(ObjStuff.java:3)
     >
 
-I ran into this error the first time through.  The error was that I forgot to put the label public on the first line of ``ObjA.java`` (and ``ObjB.java``).  I'm getting an ``IllegalAccessError`` because classes are not public by default.  Interesting that this is not a problem when I am in the same directory as the jar file.
+I ran into this error the first time through.  The error was that I forgot to put the label public on the first line of ``ObjA.java`` (and ``ObjB.java``).  I'm getting an ``IllegalAccessError`` because classes are not public by default.  
 
-Fixed this and did it all again.  Now:
+It's interesting that this is not a problem when I am in the same directory as the jar file.  The reason is that the default is not ``public`` but ``package-private``, and that allows access from the same "package" or in this case, the same directory.
+
+http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html
+
+Fixed the ``public`` labels and did it all again.  Now:
 
 .. sourcecode:: bash
 
