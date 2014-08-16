@@ -4,26 +4,27 @@
 Arrays
 ######
 
-There are a number of different "collections" in Java, but the most fundamental is the array, which shares properties with arrays in C and C++.
+There are a number of different "collections" in Java, but the most basic one is the array.  The Java array shares some properties with arrays in C and C++, but has some additional methods that can operate on it (provided by the ``Arrays`` class).
 
 Here's an example:
 
 .. sourcecode:: java
 
-    import java.util.*;
+    import java.util.Arrays;
 
-    class MyArrays {
+    class Test {
         public static void main(String[] args) {
             int[] A = { 1, 2, 3, 4, 5 };
                
-            // for-each
+            // for-each loop
             for (int i: A) {
                 System.out.printf("%d ", i);
             }
             System.out.println();
+            
             System.out.println(Arrays.toString(A));
                 
-            // using an index
+            // iterate using an index
             System.out.print("A:  ");
             for (int i = 0; i < A.length; i++) {
                 if (i < A.length - 1) {
@@ -45,7 +46,7 @@ The import statement at the top is needed for the ``Arrays.toString`` method, wh
     
 combines declaration and initialization.  
 
-Then, we go through the array and print the values in three ways:  using a for-each loop and a format string, using the ``Arrays.toString`` method, and using an index that ranges from ``0`` to ``i < A.length``.  Using the index allows us to print the last value in a special way.
+Then, we go through the array and print the values in three ways:  using a for-each loop and a format string, using the ``Arrays.toString`` method, and using an index that ranges from ``0`` to ``i < A.length``.  Having the index allows us to print the last value in a special way.
 
 The output:
 
@@ -58,15 +59,15 @@ The output:
     A:  0: 1, 1: 2, 2: 3, 3: 4, 4: 5.
     >
 
-We can spiff things up a little by doing the following.  A common usage is to ``join`` the elements of an array of strings joined by a string separator.  This construct doesn't exist in standard Java, though it does in certain add-on libraries.
+We can spiff things up a little.  A common usage is to ``join`` the elements of an array of strings joined by a string separator.  This construct doesn't exist in standard Java, though it does in certain add-on libraries.
 
 We will roll our own:
 
-.. sourcecode:: bash
+``Joiner.java``:
 
-    import java.util.*;
+.. sourcecode:: java
 
-    class Joiner {
+    public class Joiner {
         public static String join(String[] words, String sep){
             StringBuilder sb = new StringBuilder();
             int count = 0;
@@ -81,24 +82,30 @@ We will roll our own:
         }
     }
 
-    class MyArray {
+``Test.java``:
+
+.. sourcecode:: java
+
+    import java.util.Arrays;
+
+    class Test {
         public static void main(String[] args) {
             String[] C = { "a","b","c","d","e"};
             StringBuilder sb = new StringBuilder();
-        
+
             for (String s: C) { sb.append(s); }
             System.out.println(sb.toString());
-        
+
             boolean b;
             b = Arrays.asList(C).contains("a");
             System.out.println(b);
-        
+
             Joiner J = new Joiner();
             System.out.println(J.join(C,"*"));
         }
     }
 
-In the ``main`` function, we examine the contents of our array of Strings in two ways.  First, we use a ``StringBuilder`` to construct a string from a list of values.  Then we just do ``sb.toString()`` to get the string from it.  
+In the ``main`` function, we look at the contents of the array of Strings in two ways.  First, we use a ``StringBuilder`` to construct a string from a list of values.  Then we just do ``sb.toString()`` to get the string from it.  
 
 In the middle part we test whether the array contains a particular value.  Since the only way to access the array elements directly is using the ``[]`` operator, we must first cast the array using the call:  ``Arrays.asList``.
 
@@ -144,6 +151,8 @@ Quite to my surprise, I learned that even the basic array type can be sorted, th
     6 1 2 4 3 0 5 
     0 1 2 3 4 5 6 
     >
+    
+One can also call ``Arrays.sort(array,low,high)`` to sort only those values of the array that lie in the range ``[low,high)``.  Additional methods in this class include ``binarySearch``, ``fill`` and ``copyOfRange``.
 
 Here is another example from Sedgewick and Wayne.  Suppose we have a collection of values like [0:10) and we draw randomly with replacement.  On the average, how long will it take before we see every value (collect every coupon)?
 
