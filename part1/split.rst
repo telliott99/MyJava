@@ -22,13 +22,13 @@ The split method takes an optional int parameter, which tells how many values to
         public static void main (String[] args) {
             String s = "Hello world\nagain";
             String[] a;
-            \\ this gives three words
+            // this gives three words
             a = s.split("\\s");
             pp(a);
-            \\ this does not split at all
+            // this does not split at all
             a = s.split("\\s",1);
             pp(a);
-            \\ this gives ["Hello","world\again"]
+            // this gives ["Hello","world\again"]
             a = s.split("\\s",2);
             pp(a);
             a = "one\ntwo\nthree".split("\n",2);
