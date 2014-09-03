@@ -66,7 +66,46 @@ Here is a second example that checks to see that the argument is the correct typ
 
 The line ``import java.util.*`` is needed for the "exception" type we use:  ``NumberFormatException``.
 
-And here is a more extensive example of interactive input from the user:
+Here is an example of interactive input from the user:
+
+.. sourcecode:: java
+
+    import java.util.Scanner;
+
+    public class Questions {
+        public static void main(String[] args) {
+            String s;
+            System.out.println("Hello");
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Wanna play a game?\n  Enter a letter: ");
+            while (true) {
+                s = sc.nextLine();
+                if (s.equals("q") || s.equals("Q")) {
+                    System.exit(0);
+                }
+                System.out.println(s);
+                System.out.println("Again?  Enter q to quit");
+            }
+        }
+    }
+
+.. sourcecode:: bash
+
+    > javac Questions.java 
+    > java Questions
+    Hello
+    Wanna play a game?
+      Enter a letter: 
+    a
+    a
+    Again?  Enter q to quit
+    b
+    b
+    Again?  Enter q to quit
+    q
+    >
+
+And here is a more extensive example:
 
 .. sourcecode:: java
 
