@@ -8,6 +8,7 @@ Contents:
    :maxdepth: 1
    
    objects
+   rational
    imports
    arraylist
    sort
