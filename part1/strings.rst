@@ -4,7 +4,7 @@
 Strings
 #######
 
-Let's take a look at the ``String`` class. Strings are like words, a sequence of letters in a particular order.  The length of a string can be as short as one.  The value of a string is always given surrounded by double quotes, like this:  ``"abc"``.  This value by itself is called a string literal.
+Let's take a look at the ``String`` class. Strings are like words, a sequence of letters in a particular order.  The length of a string can be as short as zero (the empty string ``""``).  The value of a string is always given surrounded by double quotes, like this:  ``"abc"``.  This value by itself is called a string literal.
 
 In Java, any time we declare a new variable, we must give its type, so the following code declares a new String variable, ``s``:
 
@@ -147,3 +147,24 @@ Let's look at ``replace``.  Add this to the previous class:
     a b c 
     a*c
     >
+
+Here is an example that shows two ways of constructing a ``char`` type and then converting the result to be a string.  Also use ``==`` to compare characters but ``equals`` to compare Strings.  (``==`` means "is exactly the same object").
+
+.. sourcecode:: java
+
+    import java.util.*;
+    class X {
+        public static void main(String[] args) {
+            char c1 = 'A';
+            char c2 = (char) 65;
+            System.out.println(c2);
+            if (c1 == c2) {
+                System.out.println("Yes");
+            }
+            String s = Character.toString(c1);
+            String t = new String(new char[]{c2});
+            if (s.equals(t)) {
+                System.out.println("Yes");
+            }
+        }
+    }
