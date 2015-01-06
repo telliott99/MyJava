@@ -48,7 +48,7 @@ Let's unpack the program listing with the class definition a bit.
 
 First of all, every program needs a ``main`` function, a place to start execution.  Here ``main`` is the only function contained in the ``Hello`` class definition.  When we do ``java Hello`` on the command line, the Java runtime looks for the class definition of ``Hello`` in a file ``Hello.class`` and looks inside for a ``main`` function to get things going.
 
-Everything in Java is an object (except for some primitive types like ints) and has a class definition.  Generally speaking there should be one class per file, and that file should have the same name as the class, followed by ``.java``.  However, it is possible to break this rule in the beginning, putting multiple classes in the same file, just to keep things a bit simpler.
+Everything in Java is an object (except for some primitive types like ``int``s) and every object has a class definition.  Generally speaking there should be one class per file, and that file should have the same name as the class, followed by ``.java``.  However, it is possible to break this rule, and we will do so in the beginning, putting multiple classes in the same file, just to keep things a bit simpler.  A single file may have only one ``public`` class definition.
 
 The ``main`` function again:
 
@@ -58,12 +58,12 @@ The ``main`` function again:
         System.out.println("Hello World!");
     }
 
-The label ``void`` (a Java "reserved word") means that this function does not produce, or "return" any result.  In parentheses are listed the arguments passed to the function (or just empty parentheses, if there are none).  Here there is a single argument, an array (like a list) that may contain zero or more Strings.  The code for the function itself is surrounded by brackets "{ }", and consists of the single statement
+The label ``void`` (a Java "reserved word") means that this function does not produce, or "return" any result.  In parentheses are listed the arguments passed to the function (or just empty parentheses, if there are no arguments passed).  Here there is a single argument, an array (like a list) that may contain zero or more Strings.  The code for the function itself is surrounded by brackets "{ }", and consists of the single statement
 
 .. sourcecode:: java
 
     System.out.println("Hello World!");
 
-a somewhat complicated way of printing the string "Hello World!" to the console screen.  The quotation marks indicate this is a ``String`` variable.  The ``println`` tells the system to add a newline at the end of the character stream.
+a somewhat complicated way of printing the string "Hello World!" to the console screen.  The double quotation marks indicate this is a ``String`` variable.  The ``ln`` in ``println`` tells the system to add a newline at the end of the character stream.
 
-In general, the label ``public`` means that the object with that label can be seen upon import by another class.  Alternatives include ``private`` (not visible), and others.  The label ``static`` means that there is only one copy or version of the object per class.  Later, when we talk about objects and how they are constructed, this will make more sense.
+In general, the label ``public`` means that the object so labeled can be seen used (is "visible") upon import by another class.  Alternatives include ``private`` (not visible), and others.  The label ``static`` means that there is only one copy or version of the object per class.  Later, when we talk about objects and how they are constructed, this will probably make more sense.

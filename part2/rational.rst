@@ -28,7 +28,7 @@ Here is an example I cooked up for a homework problem.  I think the problem is a
         public RationalNumber() {
             // with no args, 
             // construct a default RationalNumber
-            this(1,2);
+            this(1,1);
         }
         public int getNumerator() { return n; }
         public int getDenominator() { return d; }
@@ -42,32 +42,32 @@ Here is an example I cooked up for a homework problem.  I think the problem is a
             return true;
         }
         //=========================================
-        public void add(RationalNumber r) {
+        public RationalNumber add(RationalNumber r) {
             // local variables in constructor and methods
             // are always num and den
             // a/c + b/d = (ad + bc)/cd
             int den = d * r.d;
             int lhs = n * r.d;
             int rhs = r.n * d;
-            int num = lhs + rhs; 
-            reduceTerms(num,den);
+            int num = lhs + rhs;
+            return new RationalNumber(num,den);
         }
-        public void subtract(RationalNumber r) {
+        public RationalNumber subtract(RationalNumber r) {
             // a/c - b/d = (ad + bc)/cd
             int den = d * r.d;
             int lhs = n * r.d;
             int rhs = r.n * d;
-            int num = lhs - rhs; 
-            reduceTerms(num,den);
+            int num = lhs - rhs;
+            return new RationalNumber(num,den);
         }
-        public void multiply(RationalNumber r) {
+        public RationalNumber multiply(RationalNumber r) {
             // a/c multiplied by b/d = ab/cd
             int num, den;
             num = n * r.n;
             den = d * r.d;
-            reduceTerms(num,den);
+            return new RationalNumber(num,den);
         }
-        public void divide(RationalNumber r) {
+        public RationalNumber divide(RationalNumber r) {
             // a/c divided by b/d = ad/bc
             if (r.n == 0) {
                 throw new IllegalArgumentException();
@@ -75,7 +75,7 @@ Here is an example I cooked up for a homework problem.  I think the problem is a
             int num, den;
             num = n * r.d;
             den = d * r.n;
-            reduceTerms(num,den);
+            return new RationalNumber(num,den);
         }
         //=========================================
         // greatest common divisor of a and b
@@ -96,7 +96,7 @@ Here is an example I cooked up for a homework problem.  I think the problem is a
         }
     }
     
-Here is ``Test.java`` (should really be more extensive):
+``Test.java``
 
 .. sourcecode:: java
 
@@ -104,24 +104,23 @@ Here is ``Test.java`` (should really be more extensive):
         public static void main(String[] args) {
             RationalNumber p,q,r,s,t,u;
             p = new RationalNumber(6,10);
-            q = new RationalNumber(5,3);
+            q = new RationalNumber(2,3);
             r = new RationalNumber();
             System.out.println(p);
             System.out.println(q);
             System.out.println(r);
-            p.multiply(q);
-            System.out.println(p);
+            r = p.multiply(q);
+            System.out.println(r);
          }
     }
 
 .. sourcecode:: bash
 
-    > javac RationalNumber.java 
-    > javac Test.java
+    > javac Test.java 
     > java Test
     3/5
-    5/3
-    1/2
+    2/3
     1/1
+    2/5
     >
 

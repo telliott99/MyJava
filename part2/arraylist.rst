@@ -11,12 +11,14 @@ In a previous section we looked at Java arrays, which are similar to the arrays 
     class Test {
         public static void main(String[] args) {
             int[] A = { 1, 3, 6, 4 };
-            for (int i: A) { System.out.printf("%d ", i); }
+            for (int i: A) { 
+                System.out.printf("%d ", i); 
+            }
             System.out.println();
         }
     }
     
-This code does what you'd expect.  It prints:
+This code does what you'd expect:
 
 .. sourcecode:: bash
 
@@ -25,9 +27,9 @@ This code does what you'd expect.  It prints:
     1 3 6 4 
     >
 
-However, this type of array has several limitations.  Basically, the only way to work with the values is to access them like ``println(A[2]);``, or use the for-each construct as a way of doing the same thing behind the scenes.
+However, this type of array has several limitations.  The only way to work with the values is to access them like ``println(A[2]);``, or use the for-each construct as a way of doing the same thing behind the scenes.
 
-There is also a ``length`` property.  If we add this:
+There is also a ``length`` property (not a method, and doesn't get "called" with parentheses).  If we add this:
 
 .. sourcecode:: java
 
@@ -39,7 +41,11 @@ we get the additional output:
 
     4
 
-But that's it.  There is no built-in way to sort the list, or reverse it.  Such an array can only hold primitive types, not objects, with the exception of Strings.  The length (number of items) is fixed and cannot be altered.  Finally, one can crash the program by attempting to access an invalid index.  We say that the compiler does not do "bounds checking" on array access.
+But that's it.  There is no built-in way to sort the list, or reverse it.  Such an array can only hold primitive types, not objects, with the exception of Strings.  The length (number of items) is fixed and cannot be altered.
+
+One thing that is different in Java arrays is the ability to hold String types.  For example, the argument to ``main`` is an array of Strings:  ``String [] args``.
+
+One can crash a program by attempting to access an invalid index.  We say that the compiler does not do "bounds checking" on array access.
 
 Consider this code, which is *almost* correct:
 
@@ -126,7 +132,7 @@ The next example shows two slightly different ways of making an ArrayList, the f
         }
     }
 
-A new idea here is shown by the accessory method ``prettyPrint`` which prints an ArrayList<String>.  We obtain an iterator to move through the ArrayList, and the code shown is the characteristic way to use an iterator.
+A new idea here is shown by the accessory method ``prettyPrint`` which prints an ArrayList<String>.  We obtain an iterator to move through the ArrayList, and the code shown below is the characteristic way to use an iterator.
 
 .. sourcecode:: java
 

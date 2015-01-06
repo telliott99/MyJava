@@ -16,9 +16,9 @@ At a somewhat more advanced level this book by Sedgewick and Wayne is really exc
 
 http://introcs.cs.princeton.edu/java/home/
 
-These different types of floating point number (think:  scientific notation) differ by how many bits are used to represent them.  A ``double`` is a floating point number with twice the precision (twice the number of digits) as a ``float``.  These are useful for approximately 15 and 7 places, respectively.  Similarly ``long`` (64), ``int`` (32), ``short`` (16) and ``byte`` (8) are different forms of integer, which differ in their maximum values, again, because of the number of bits used to represent them inside the program, as listed.
+Different types of number differ by how many bits are used to represent them.  A ``double`` is a floating point number (think:  scientific notation) with twice the precision (twice the number of digits) as a ``float``.  These are useful for approximately 15 and 7 places, respectively.  Similarly ``long`` (64), ``int`` (32), ``short`` (16) and ``byte`` (8) are different forms of integer, which differ in their maximum values, again, because of the number of bits used to represent them inside the program, as listed.
 
-One point worth mentioning is that a change from one type of a number to another may happen implicitly, if the change conserves information, but the other direction requires a cast.  Here is an example with floats (floating point numbers) and integers:
+One point worth mentioning is that a change from one type of a number to another may happen implicitly, if the change conserves information, but changing in the other direction requires a cast.  Here is an example with floats (floating point numbers) and integers:
 
 .. sourcecode:: java
 
@@ -28,7 +28,7 @@ One point worth mentioning is that a change from one type of a number to another
         	System.out.println("i = " + i);
         	double d = i;
         	System.out.println("d = " + d);
-        	int j = (int)d;
+        	int j = (int) d;
         	System.out.println("j = " + j);
         }
     }
@@ -50,7 +50,7 @@ If you look carefully at what we did, we had
 
     double d = i;
     
-which assigns the value of the integer ``i`` to the double ``d``, a floating point number.  The compiler accepts this happily and "promotes" the value in the process.  But going the other way:
+which assigns the value of the integer ``i`` to the double ``d``, a change from an integer to a floating point number.  The compiler accepts this happily and "promotes" the value in the process.  But going the other way:
 
 .. sourcecode:: java
 
@@ -60,7 +60,7 @@ we have to tell the compiler explicitly that we really do mean to convert our fl
 
 .. sourcecode:: java
 
-    int k = (int)(Math.PI);
+    int k = (int) (Math.PI);
     System.out.println(k);
 
 .. sourcecode:: bash
@@ -72,8 +72,7 @@ we have to tell the compiler explicitly that we really do mean to convert our fl
 
 Oops.
 
-Operators have different precendence:  for example ``*`` (multiplication) is evaluated before ``+`` (addition).  Thus
-``3 + 5 * 2`` is equal to 30, not 16.  However, it is wiser not to rely on the rules, if for no other reason than to make your intention clear.  Do this:  ``3 + (5 * 2)``.
+Operators have different precedence:  for example ``*`` (multiplication) is evaluated before ``+`` (addition).  Thus ``3 + 5 * 2`` is equal to 30, not 16.  However, it is safer not to rely on the rules, if for no other reason than to make your intention clear.  I always do this:  ``3 + (5 * 2)``.
 
 A number of Java methods and class constructors require objects, and do not accept the ``int`` and ``double`` types.  To convert to an Integer object, do this:
 
@@ -103,7 +102,7 @@ A number of Java methods and class constructors require objects, and do not acce
     I don't care..
     >
 
-Various classes also contain numeric constants, like ``Math.PI`` and ``Math.E``.  Two other values are ``Double.NEGATIVE_INFINITY`` and ``Integer.MIN_VALUE``.  The last one might be used in a routine to scan an array to find the maximum value.  We start by setting ``max`` to a value that is guaranteed to be less than (or equal to) the smallest possible number in the array.  Then go through the array.  If a value is larger than the current value for max, set max equal to that value.
+Various classes contain definitions of numeric constants, like ``Math.PI`` and ``Math.E``.  Two other values are ``Double.NEGATIVE_INFINITY`` and ``Integer.MIN_VALUE``.  The last one might be used in a routine to scan an array to find the maximum value.  We start by setting ``max`` to a value that is guaranteed to be less than (or equal to) the smallest possible number in the array.  Then go through the array.  If a value is larger than the current value for max, set max equal to that value.
 
 .. sourcecode:: java
 
@@ -142,5 +141,4 @@ Various classes also contain numeric constants, like ``Math.PI`` and ``Math.E``.
     Integer.MAX_VALUE 2147483647
     2^31 - 1 = 2147483646
     >
-    
 

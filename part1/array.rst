@@ -71,10 +71,10 @@ We will roll our own:
         public static String join(String[] words, String sep){
             StringBuilder sb = new StringBuilder();
             int count = 0;
-            for (String s:words) { 
+            for (String s:words) {
                 sb.append(s);
                 count += 1;
-                if (count != words.length-1) {
+                if (count < words.length) {
                     sb.append(sep);
                 }
             }
@@ -119,7 +119,7 @@ Here is the output:
     > java MyArray
     abcde
     true
-    a*b*c*de*
+    a*b*c*d*e*
     >
 
 Quite to my surprise, I learned that even the basic array type can be sorted, the method is in ``Arrays``.  (To be technically accurate, I should say that the Arrays class has a method that takes an array argument and sorts it, in place).

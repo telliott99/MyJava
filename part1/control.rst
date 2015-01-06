@@ -43,6 +43,16 @@ These next three generate the same output:
                 }
             }
             System.out.println();
+
+            i = 0;
+            for (;;) {
+                System.out.print(i + " ");
+                i += 1;
+                if (i == N) {
+                    break;
+                }
+            }
+            System.out.println();
         }
     }
     
@@ -50,6 +60,7 @@ These next three generate the same output:
     
     > javac Test.java
     > java Test
+    0 1 2 3 4 
     0 1 2 3 4 
     0 1 2 3 4 
     0 1 2 3 4 
@@ -89,7 +100,7 @@ It is interesting that, while the construct ``for (int i = 0; i < N; i++) {`` no
     public class Test {
         public static void main(String[] args) {
             int N = 10;
-            for (int i = 2; i < Math.pow(2,10)+1 ; i *= 2) {
+            for (int i = 2; i < Math.pow(2,10) + 1 ; i *= 2) {
                 System.out.print(i + " ");
             }
             System.out.println();
