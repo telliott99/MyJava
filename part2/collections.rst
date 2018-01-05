@@ -60,9 +60,9 @@ Constructing a HashMap from two lists:  unfortunately there is no equivalent to 
 
     class Test {
         public static void main(String[] args) {
-        	String[] keys= {"a", "b", "c"};
-        	int[] vals= {1, 2, 3};
-        	Map<String, Integer> m= new HashMap<>();
+        	String[] keys = {"a", "b", "c"};
+        	int[] vals = {1, 2, 3};
+        	Map<String, Integer> m = new HashMap<>();
         	for(int i= 0; i < keys.length; i++){
         	   m.put(keys[i], vals[i]);
             }
@@ -76,4 +76,4 @@ Constructing a HashMap from two lists:  unfortunately there is no equivalent to 
     m: [a=1, b=2, c=3]
     > 
 
-Notice that the HashMap must contain Java objects, and thus it contains Integer values rather than just plain ints.  Since we used an array ``int[] vals``, there is a conversion from ``int`` to ``Integer`` that happens silently when we do ``m.put..`` in the loop.
+Notice that the HashMap must contain Java objects, and thus it contains Integer values rather than just plain ints.  Since we used an array ``int[] vals``, there is a conversion from ``int`` to ``Integer`` that happens silently when we do ``m.put`` in the loop.

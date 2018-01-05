@@ -13,8 +13,8 @@ Here is an example I cooked up for a homework problem.  I think the problem is a
     public class RationalNumber {
         // instance variables are n and d
         // for (n)umerator and (d)enominator
-        int n;
-        int d;
+        private int n;
+        private int d;
 
         // local variables in methods and constructor
         // are always num, den
@@ -25,22 +25,27 @@ Here is an example I cooked up for a homework problem.  I think the problem is a
             // reduces fraction to lowest terms
             reduceTerms(num, den);
         }
+
         public RationalNumber() {
             // with no args, 
             // construct a default RationalNumber
             this(1,1);
         }
+
         public int getNumerator() { return n; }
         public int getDenominator() { return d; }
+
         public String toString() {
             return String.format("%d/%d", n, d);
         }
+
         public boolean equals(RationalNumber r) {
             // assumes always lowest terms
             if (n != r.n) { return false; };
             if (d != r.d) { return false; }
             return true;
         }
+
         //=========================================
         public RationalNumber add(RationalNumber r) {
             // local variables in constructor and methods
@@ -52,6 +57,7 @@ Here is an example I cooked up for a homework problem.  I think the problem is a
             int num = lhs + rhs;
             return new RationalNumber(num,den);
         }
+
         public RationalNumber subtract(RationalNumber r) {
             // a/c - b/d = (ad + bc)/cd
             int den = d * r.d;
@@ -60,6 +66,7 @@ Here is an example I cooked up for a homework problem.  I think the problem is a
             int num = lhs - rhs;
             return new RationalNumber(num,den);
         }
+
         public RationalNumber multiply(RationalNumber r) {
             // a/c multiplied by b/d = ab/cd
             int num, den;
@@ -67,6 +74,16 @@ Here is an example I cooked up for a homework problem.  I think the problem is a
             den = d * r.d;
             return new RationalNumber(num,den);
         }
+
+        public void invert() {
+            if (n == 0) {
+                throw new IllegalArgumentException();
+            }
+            int tmp = n;
+            n = d;
+            d = tmp;
+        }
+
         public RationalNumber divide(RationalNumber r) {
             // a/c divided by b/d = ad/bc
             if (r.n == 0) {
@@ -77,6 +94,7 @@ Here is an example I cooked up for a homework problem.  I think the problem is a
             den = d * r.n;
             return new RationalNumber(num,den);
         }
+
         //=========================================
         // greatest common divisor of a and b
         // en.wikipedia.org/wiki/Euclidean_algorithm
@@ -88,19 +106,14 @@ Here is an example I cooked up for a homework problem.  I think the problem is a
             }
             return a;
         }
+
         // modifies the instance variables
         private void reduceTerms(int num, int den) {
             int f = gcd(num,den);
             n = num/f;
             d = den/f;
         }
-    }
-    
-``Test.java``
 
-.. sourcecode:: java
-
-    public class Test { 
         public static void main(String[] args) {
             RationalNumber p,q,r,s,t,u;
             p = new RationalNumber(6,10);

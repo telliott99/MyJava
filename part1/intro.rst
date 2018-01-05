@@ -48,7 +48,7 @@ Let's unpack the program listing with the class definition a bit.
 
 First of all, every program needs a ``main`` function, a place to start execution.  Here ``main`` is the only function contained in the ``Hello`` class definition.  When we do ``java Hello`` on the command line, the Java runtime looks for the class definition of ``Hello`` in a file ``Hello.class`` and looks inside for a ``main`` function to get things going.
 
-Everything in Java is an object (except for some primitive types like ``int`` ws) and every object has a class definition.  Generally speaking there should be one class per file, and that file should have the same name as the class, followed by ``.java``.  However, it is possible to break this rule, and we will do so in the beginning, putting multiple classes in the same file, just to keep things a bit simpler.  A single file may have only one ``public`` class definition.
+Everything in Java is an object (except for some primitive types like ``int`` ) and every object has a class definition.  Generally speaking there should be one class per file, and that file should have the same name as the class, followed by ``.java``.  However, it is possible to break this rule, and we will do so in the beginning, putting multiple classes in the same file, just to keep things a bit simpler.  A single file may have only one ``public`` class definition.
 
 The ``main`` function again:
 

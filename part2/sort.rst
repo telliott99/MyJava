@@ -4,9 +4,11 @@
 Sorting
 #######
 
-Sorting is a very common operation in computer science.  If we have an array of Integers, it's pretty clear what we want when we call for a sorted array.  For Strings, obviously "a" comes before "b", but if we want "A" to sort just the same as "a", or just after "a" (these are different things), we need to take an extra step.  That's because *lexicographically*, the default sorting method puts all the capital letters before all the lowercase letters (based on ASCII encoding).
+Sorting is a common operation in computer science.  If we have an array of Integers, it's pretty clear what we want when we ask for a sorted array.  
 
-To extend sorting to objects, let's add something to the ``Obj`` class definition shown previously
+For Strings, "a" comes before "b" in the same order as the standard alphabet, but if we want "A" to sort just the same as "a", or just after "a" (these are different things), we need to take an extra step.  That's because *lexicographically*, the default sorting method puts all the capital letters before all the lowercase letters (ordered based on ASCII encoding).
+
+To extend sorting to user-defined objects, let's add an "interface" to the ``Obj`` class definition shown previously
 
 .. sourcecode:: java
 
@@ -67,7 +69,7 @@ From the command line we get the output:
     
 The new part is what comes after "sorted:".
 
-You can see that the objects are sorted lexicographically according to name, but they could be sorted according to any property by changing the ``compareTo`` function appropriately.
+You can see that the objects have been sorted lexicographically according to name.  But they could be sorted according to any property by changing the ``compareTo`` function appropriately.
 
 The full listing for ``ObjStuff`` is:
 

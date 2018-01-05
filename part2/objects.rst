@@ -122,7 +122,7 @@ Four very short files:
 .. sourcecode:: java
 
     public abstract class Animal {
-        public abstract void speak();
+        abstract void speak();
     }
 
 ``Cat.java``
